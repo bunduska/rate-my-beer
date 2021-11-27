@@ -16,7 +16,7 @@ import { JwtSecret } from './jwt-secret-code';
       signOptions: { expiresIn: '60s' },
     }),
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy, JwtSecret ],
+  providers: [AuthService, LocalStrategy, JwtStrategy, JwtSecret],
   exports: [AuthService],
 })
 export class AuthModule {}
