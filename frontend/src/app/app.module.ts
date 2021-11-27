@@ -10,7 +10,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HomeComponent, UsersComponent, LoginComponent, RegisterComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    UsersComponent,
+    LoginComponent,
+    RegisterComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
