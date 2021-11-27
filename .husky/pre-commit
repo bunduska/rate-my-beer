@@ -5,3 +5,8 @@ pushd backend
 npm run lint
 npm run format
 popd 
+
+pushd frontend
+npm lint
+npm run format
+popd 
