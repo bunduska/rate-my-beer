@@ -26,7 +26,7 @@ export class AuthService {
       return { message: 'User does not exist!' };
     } else if (user.password !== pass) {
       return { message: 'Incorrect password!' };
-    } 
+    }
     return { message: 'Unauthorized' };
   }
 }

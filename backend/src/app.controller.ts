@@ -4,7 +4,10 @@ import { RegisterService } from './services/register.service';
 
 @Controller()
 export class AppController {
-  constructor(private authService: AuthService, private registerService: RegisterService) {}
+  constructor(
+    private authService: AuthService,
+    private registerService: RegisterService,
+  ) {}
 
   @Post('/login')
   async login(@Request() req) {
@@ -14,8 +17,15 @@ export class AppController {
 
   @Post('/register')
   async register(@Request() req) {
-    const userToRegister: { email: string; password: string; username: string } = req.body;
-    return this.registerService.register(userToRegister.email, userToRegister.password, userToRegister.username);
+    const userToRegister: {
+      email: string;
+      password: string;
+      username: string;
+    } = req.body;
+    return this.registerService.register(
+      userToRegister.email,
+      userToRegister.password,
+      userToRegister.username,
+    );
   }
-
 }
