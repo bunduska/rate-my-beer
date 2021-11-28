@@ -3,15 +3,12 @@
         <div class="h1-content">
             <h1><span class="h1-text">Login</span></h1>
         </div>
-
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <mat-icon color="primary" matPrefix>email</mat-icon>
             <input class="inputClass" matInput placeholder="ticket@example.com" formControlName="email" type="email" />
-            <mat-error *ngIf="submitted && f.email.errors">Email is required</mat-error>
         </mat-form-field>
-
-
+        <mat-error *ngIf="submitted && f.email.errors">Email is required</mat-error>
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <mat-icon matPrefix color="primary" class="icon-display"></mat-icon>
@@ -23,16 +20,13 @@
                     hide ? 'visibility_off' : 'visibility'
                     }}</mat-icon>
             </a>
-            <mat-error *ngIf="submitted && f.password.errors">
-                <div *ngIf="f.password.errors.required">Password is required</div>
-                <div *ngIf="f.password.errors.minlength">
-                    Password must be at least 8 characters
-                </div>
-            </mat-error>
         </mat-form-field>
-
-        <mat-error *ngIf="wrongInputMessage">{{ wrongInputMessage }}</mat-error>
-
+        <mat-error *ngIf="submitted && f.password.errors">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">
+                Password must be at least 8 characters
+            </div>
+        </mat-error>
         <div class="register-button">
             <button mat-raised-button color="primary">
                 Login

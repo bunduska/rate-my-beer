@@ -1,1 +1,96 @@
-<p>register works!</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="flex-container">
+        <div class="h1-content">
+          <h1><span class="h1-text">Sign up</span></h1>
+        </div>
+  
+        <mat-form-field  appearance="fill">
+          <mat-label>Name</mat-label>
+          <mat-icon matPrefix color="primary">person</mat-icon>
+          <input
+            class="inputClass"
+            matInput
+            placeholder="Example name"
+            formControlName="name"
+          />
+
+        </mat-form-field>
+        <mat-error *ngIf="submitted && f.name.errors"
+        >Username is required</mat-error
+      >
+        <mat-form-field  appearance="fill">
+          <mat-label>Email</mat-label>
+          <mat-icon color="primary" matPrefix>email</mat-icon>
+          <input
+            class="inputClass"
+            matInput
+            placeholder="beer@drinking.com"
+            formControlName="email"
+            type="email"
+          />
+
+        </mat-form-field>
+        <mat-error *ngIf="submitted && f.email.errors"
+        >Email is required</mat-error
+      >
+        <mat-form-field  appearance="fill">
+          <mat-label>Password</mat-label>
+          <mat-icon
+            matPrefix
+            color="primary"
+            class="icon-display"
+          ></mat-icon>
+  
+          <input
+            class="inputClass"
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <a
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+            color="primary"
+            class="hide"
+          >
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </a>
+
+        </mat-form-field>
+        <mat-error *ngIf="submitted && f.password.errors">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">
+              Password must be at least 8 characters
+            </div>
+          </mat-error>
+        <mat-checkbox
+          color="primary"
+          labelPosition="after"
+          formControlName="isLegalAgeConfirmed"
+        >
+          Please confirm your are old enough to drink in your own country
+   
+        </mat-checkbox>
+        <mat-error *ngIf="submitted && f.isLegalAgeConfirmed.errors">
+            Please confirm!!!
+          </mat-error>
+        <div class="register-button">
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="loading"
+          >
+            Register
+          </button>
+        </div>
+        <br />
+        <div class="button">
+          <button mat-raised-button routerLink="/login">Or Login</button>
+        </div>
+      </div>
+    </form>  
+  

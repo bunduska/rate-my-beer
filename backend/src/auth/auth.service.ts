@@ -23,11 +23,10 @@ export class AuthService {
       };
     }
     if (!user) {
-      return { message: 'User does not exist!'};
+      return { message: 'User does not exist!' };
     } else if (user.password !== pass) {
-      return { message: 'Incorrect password!'};
-    } else {
-      return { message: 'Unauthorized'};
-    }
+      return { message: 'Incorrect password!' };
+    } 
+    return { message: 'Unauthorized' };
   }
 }
