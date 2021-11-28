@@ -66,7 +66,7 @@ export class RegisterComponent implements OnInit {
             this.message = data.message;
             this.openSnackBar(this.message);
           } else {
-            this.openSnackBar('Registration is succesful');
+            this.openSnackBar('Registration is OK, please check your e-mail!');
             this.router.navigate(['/login']);
           }
         },

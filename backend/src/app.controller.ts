@@ -22,14 +22,11 @@ export class AppController {
       password: string;
       username: string;
     } = req.body;
-    try {
-      return await this.usersService.register(
+    return this.usersService.register(
         newUser.email,
         newUser.password,
         newUser.username,
       );
-    } catch {
-      return { message: 'Error when saving user!!!' };
-    }
+
   }
 }

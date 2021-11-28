@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from 'src/models/user.model';
+import { hash } from 'argon2';
 
 @Injectable()
 export class UsersService {
@@ -22,11 +23,20 @@ export class UsersService {
     email: string,
     password: string,
     username: string,
-  ): Promise<User> {
+  ): Promise<User | { message: string }> {
+    
+    if (await this.findUserByEmail(email) !== undefined) {
+      return { message: 'Email is already taken!' };
+    }
+
     const userToRegister: User = new User();
     userToRegister.email = email;
-    userToRegister.password = password;
+    userToRegister.password =   await hash(password);
     userToRegister.username = username;
-    return await this.usersRepository.save(userToRegister);
+    try {
+      return await this.usersRepository.save(userToRegister);
+    } catch {
+      return { message: 'Error when saving user!!!' };
+    }
   }
 }

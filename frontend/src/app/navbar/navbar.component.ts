@@ -16,6 +16,10 @@ export class NavbarComponent {
     return this.authService.getCurrentUser()!.username;
   }
 
+  isCurrentUserAdmin(): boolean {
+    return !this.authService.getCurrentUser()!.isAdmin;
+  }
+
   logout() {
     this.authService.logout();
   }
