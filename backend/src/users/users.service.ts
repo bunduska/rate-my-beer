@@ -82,7 +82,7 @@ export class UsersService {
 
   async validateRegistration(token: string): Promise<boolean> {
     const userToValidate: User = await this.jwtService.verify(token);
-    let user: User = await this.findUserByEmail(userToValidate.email);
+    const user: User = await this.findUserByEmail(userToValidate.email);
     console.log(user);
     if (user) {
       user.isValidated = true;
