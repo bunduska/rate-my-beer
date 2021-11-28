@@ -1,0 +1,45 @@
+.icon-display {
+  transform: scale(0.7); }
+
+.h1-content {
+  margin: 50px 0 25px 0;
+  font-size: xx-large; }
+
+.h1-text {
+  font-size: xxx-large;
+  font-weight: 500; }
+
+mat-icon {
+  margin: 0 10px 0 5px; 
+}
+.mat-icon.mat-primary {
+  color: white;
+}
+
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center; }
+
+.mat-raised-button {
+  width: 250px;
+  height: 50px; }
+
+.register-button {
+  margin-top: 50px; }
+
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+  color: white; }
+
+.mat-button-wrapper {
+  font-size: 20px; }
+
+.mat-form-field {
+  display: flex;
+  width: min(500px, 60vw);
+  justify-content: center;
+   }
+

@@ -10,7 +10,7 @@ export class UsersService {
     private usersRepository: Repository<User>,
   ) {}
 
-  private users: User[] = [];
+  users: User[] = [];
 
   async findAll(): Promise<User[]> {
     return this.usersRepository.find();
@@ -20,9 +20,8 @@ export class UsersService {
     return this.usersRepository.findOne(id.toString());
   }
 
-  async findOneWithCorrectPassword(
-    username: string,
-  ): Promise<User | undefined> {
-    return this.users.find((user) => user.username === username);
+  async findUserByEmail(email: string): Promise<User | undefined> {
+    return this.usersRepository.findOne({ where: { email } });
   }
+
 }

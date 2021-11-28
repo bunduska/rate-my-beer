@@ -1,0 +1,21 @@
+.mat-toolbar-single-row {
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.title {
+    color: black;
+    font-size: xxx-large;
+    padding-right: 50px;
+    margin-bottom: 0px;
+}
+
+.mat-toolbar {
+    position: absolute;
+    background-color: transparent;
+}
+
+a:visited { 
+    text-decoration: none; 
+    color: black; 
+   }
