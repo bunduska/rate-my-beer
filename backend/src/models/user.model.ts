@@ -5,15 +5,21 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ default: '' })
   username: string;
 
-  @Column()
+  @Column({ default: '' })
   password: string;
 
-  @Column()
+  @Column({ default: '' })
   email: string;
 
   @Column({ default: false })
   isAdmin: boolean;
+
+  
+
 }
+
+
+

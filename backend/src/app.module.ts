@@ -1,4 +1,3 @@
-import { RegisterService } from './services/register.service';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -31,7 +30,7 @@ import { User } from './models/user.model';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, ConfigService, RegisterService],
+  providers: [AppService, ConfigService],
 })
 export class AppModule {
   constructor(
