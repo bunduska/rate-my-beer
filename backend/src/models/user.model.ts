@@ -20,4 +20,9 @@ export class User {
   @Column({ default: false })
   isValidated: boolean;
 
+  constructor(username: string, email: string, password: string) {
+    this.username = username;
+    this.email = email;
+    this.password = password;
+  }
 }
