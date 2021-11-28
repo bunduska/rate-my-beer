@@ -8,19 +8,20 @@ import { LocalStorageService } from './localstorage.service';
 import jwt_decode from 'jwt-decode';
 
 type JWTDecodedUser = {
-  id: string; 
-  username: string, 
-  isAdmin: boolean,  
-  email: string
+  id: string;
+  username: string;
+  isAdmin: boolean;
+  email: string;
 };
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-
   constructor(
     private http: HttpClient,
     private localStorageService: LocalStorageService,
-  ) { this.getCurrentUser();  }
+  ) {
+    this.getCurrentUser();
+  }
 
   login(email: string, password: string): Observable<User> {
     return this.http
@@ -28,14 +29,14 @@ export class AuthService {
       .pipe(
         map((user) => {
           if (user.message === undefined) {
-            this.localStorageService.setItem('token', JSON.stringify(user))
+            this.localStorageService.setItem('token', JSON.stringify(user));
           }
           return user;
         }),
       );
   }
 
-  getCurrentUser() : JWTDecodedUser | null {
+  getCurrentUser(): JWTDecodedUser | null {
     let token = this.localStorageService.getItem('token');
     if (token) {
       let user: JWTDecodedUser = jwt_decode(token);

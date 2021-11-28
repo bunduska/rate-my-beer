@@ -7,22 +7,16 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
+export class NavbarComponent {
+  currentUser: User | any;
 
-export class NavbarComponent  {
+  constructor(private authService: AuthService) {}
 
-  currentUser : User | any;
-
-  constructor(private authService: AuthService) {
- 
-  }
-
-  getCurrentUserName() : string {
+  getCurrentUserName(): string {
     return this.authService.getCurrentUser()!.username;
   }
 
   logout() {
-    this.authService.logout()
+    this.authService.logout();
   }
-
-
 }
