@@ -18,8 +18,12 @@ export class UsersService {
     return this.usersRepository.findOne({ where: { email } });
   }
 
-  async register(email: string, password: string, username: string): Promise<User> {
-    let userToRegister : User = new User();
+  async register(
+    email: string,
+    password: string,
+    username: string,
+  ): Promise<User> {
+    const userToRegister: User = new User();
     userToRegister.email = email;
     userToRegister.password = password;
     userToRegister.username = username;
