@@ -22,7 +22,7 @@ export class HomeComponent {
     return !this.authService.getCurrentUser()!.isAdmin;
   }
 
-  addnewbeer() : void {
+  addnewbeer(): void {
     this.displayNewBeerComponent = true;
     this.displayBeerListComponent = false;
   }

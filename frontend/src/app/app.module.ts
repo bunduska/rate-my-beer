@@ -17,9 +17,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { NewbeerComponent } from './home/newbeer/newbeer.component';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import {MatDividerModule} from '@angular/material/divider';
     UsersComponent,
     LoginComponent,
     RegisterComponent,
-    NewbeerComponent
+    NewbeerComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +46,7 @@ import {MatDividerModule} from '@angular/material/divider';
     MatSlideToggleModule,
     MatCheckboxModule,
     MatTabsModule,
-    MatDividerModule
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
