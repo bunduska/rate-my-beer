@@ -4,4 +4,3 @@ export const environment = {
   UNTAPPED_CLIENT_ID: 'This is your Untappd Client Id',
   UNTAPPED_CLIENT_SECRET: 'This is your Untappd Client Secret',
 };
-

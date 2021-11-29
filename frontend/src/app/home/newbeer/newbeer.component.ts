@@ -11,6 +11,7 @@ export class NewbeerComponent implements OnInit {
   searchString: string = '';
   beer: Beer = {};
   categories: any = {};
+
   constructor(private searchBeerService: SearchBeerService) {}
 
   ngOnInit(): void {}

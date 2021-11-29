@@ -31,7 +31,11 @@ export class SearchBeerService {
   findMyValues(text: string, search: string, isNumber?: boolean): string {
     try {
       if (isNumber) {
-        return text.split(search)[1].split(',')[0].split('"')[1].replace(':','');
+        return text
+          .split(search)[1]
+          .split(',')[0]
+          .split('"')[1]
+          .replace(':', '');
       }
       return text.split(search)[1].split(',')[0].split('"')[2];
     } catch {
