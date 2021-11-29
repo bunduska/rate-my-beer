@@ -3,12 +3,14 @@ import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+  selector: 'home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
 })
-export class NavbarComponent {
+export class HomeComponent {
   currentUser: User | any;
+  displayNewBeerComponent: boolean = false;
+  displayBeerListComponent: boolean = true;
 
   constructor(private authService: AuthService) {}
 
@@ -18,6 +20,11 @@ export class NavbarComponent {
 
   isCurrentUserAdmin(): boolean {
     return !this.authService.getCurrentUser()!.isAdmin;
+  }
+
+  addnewbeer() : void {
+    this.displayNewBeerComponent = true;
+    this.displayBeerListComponent = false;
   }
 
   logout() {

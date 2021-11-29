@@ -1,21 +1,25 @@
 .mat-toolbar-single-row {
     justify-content: center;
-    padding-top: 30px;
-}
 
+}
 .title {
     color: black;
     font-size: xxx-large;
     padding-right: 50px;
-    margin-bottom: 0px;
+    padding-top: 20px;
 }
-
 .mat-toolbar {
     position: absolute;
     background-color: transparent;
+    background-image: url("../../assets/beer-background-royalty-free-image-1608331891_.jpg");
+    background-position: center;
 }
 
 a:visited { 
     text-decoration: none; 
     color: black; 
    }
+
+.mat-tab-group {
+    padding-top:70px;
+}

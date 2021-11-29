@@ -1,17 +1,9 @@
-<mat-toolbar>
+<mat-toolbar >
     <p class="title">Hello {{getCurrentUserName()}} - Please drink <a href="https://responsibledrinking.eu/"> responsibly</a>!</p>
     <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="/shopping-cart">
-            <mat-icon>local_drink</mat-icon>
-            <span>Add new beer</span>
-        </button>
-        <button mat-menu-item>
-            <mat-icon>format_list_bulleted</mat-icon>
-            <span>My beer list</span>
-        </button>
         <button mat-menu-item [disabled]="isCurrentUserAdmin()">
             <mat-icon>supervised_user_circle</mat-icon>
             <span>Update users</span>
@@ -22,3 +14,22 @@
         </button>
     </mat-menu>
 </mat-toolbar>
+
+<mat-tab-group mat-stretch-tabs color="primary" backgroundColor="accent">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">format_list_bulleted</mat-icon>
+        My Beer List
+      </ng-template>
+      Content 1
+    </mat-tab>
+  
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">local_drink</mat-icon>
+        Add New Beer
+      </ng-template>
+      <newbeer></newbeer>
+    </mat-tab>
+  
+  </mat-tab-group>

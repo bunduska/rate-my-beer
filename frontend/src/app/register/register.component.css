@@ -65,3 +65,12 @@ mat-icon {
     font-weight: bolder;
     padding-bottom: 20px;
 }
+
+.image {
+    background-color: white;
+    background-image: url("../../assets/beer-background-royalty-free-image-1608331890_.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+    height: 100vh;
+  }

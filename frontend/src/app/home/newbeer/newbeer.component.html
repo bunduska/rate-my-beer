@@ -1,0 +1,61 @@
+
+
+      <form #f="ngForm" (ngSubmit)="save(f.value)">
+        <div class="form-group" class="search">
+           
+            <label for="search">search</label>
+            <input name="search" [(ngModel)]="searchString" id="search" type="text" class="form-control" required>
+            <!-- <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+              name is required.
+            </div> -->
+            <button type="button" (click)="search()" class="btn btn-warning">Search</button>
+          </div>  
+
+          <div class="form-group">
+
+
+            <label for="name">name</label>
+            <input #name="ngModel" [(ngModel)]="beer.name" name="name" id="name" type="text" class="form-control" required>
+            <!-- <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+              name is required.
+            </div> -->
+          </div>        
+          <div class="form-group">
+            <label for="rating">rating</label>
+            <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <input #rating="ngModel" [(ngModel)]="beer.rating" name="rating" id="rating" type="number" class="form-control" required [min]="0">
+            </div>
+            <!-- <div class="alert alert-danger" *ngIf="rating.touched && rating.invalid">
+              <div *ngIf="rating.errors.required">rating is required.</div>
+              <div *ngIf="rating.errors.min">rating should be 0 or higher.</div>
+            </div> -->
+          </div>        
+          <div class="form-group">
+            <label for="brewery">brewery</label>
+            <select #brewery="ngModel" [(ngModel)]="beer.brewery" name="brewery" id="brewery" class="form-control" required>
+              <option value=""></option>
+              <!-- <option *ngFor="let c of categories$ | async" [value]="c.$key">
+                {{ c.name }}
+              </option> -->
+            </select>
+            <!-- <div class="alert alert-danger" *ngIf="brewery.touched && brewery.invalid">
+              brewery is required.
+            </div> -->
+          </div>        
+          <div class="form-group">
+            <label for="imageUrl">Image URL</label>
+            <input #imageUrl="ngModel" [(ngModel)]="beer.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
+            <!-- <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+              <div *ngIf="imageUrl.errors.required">Image URL is required.</div>
+              <div *ngIf="imageUrl.errors.url">Please enter a valid URL.</div>
+            </div>-->
+          </div>         
+          <button class="btn btn-primary">Save</button>
+          <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+        </form>    
+
+      <!-- <beer-card [beer]="beer" [show-actions]="false"></beer-card> -->
+
+
+  
