@@ -17,9 +17,12 @@ export class NewbeerComponent implements OnInit {
 
   save(product: any) {}
 
-  delete() {}
+  clear() {
+    this.beer = {};
+    this.searchString = '';
+  }
 
-  search() {
-    console.log(this.searchBeerService.searchBeer(this.searchString));
+  async search() {
+    this.beer = await this.searchBeerService.searchBeer(this.searchString);
   }
 }
