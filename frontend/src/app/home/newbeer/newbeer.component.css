@@ -1,6 +1,5 @@
 .form-control {
-    display: block;
-   width: 40%;
+    width: 400px;
 }
 
 .search {
@@ -8,4 +7,19 @@
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.onerow {
+    display: flex;
+}
+
+
+
+img {
+    size: 100px;
 }

@@ -20,6 +20,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NewbeerComponent } from './home/newbeer/newbeer.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatCheckboxModule,
     MatTabsModule,
     MatDividerModule,
+    TextFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
