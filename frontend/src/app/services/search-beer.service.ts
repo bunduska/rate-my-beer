@@ -17,7 +17,7 @@ export class SearchBeerService {
     this.http.get(unTappdSearchString).subscribe((data: Object) => {
       response = JSON.stringify(data);
       beerFound.name = this.findMyValues(response, 'beer_name');
-      beerFound.abv =  +this.findMyValues(response, 'beer_abv', true) ;
+      beerFound.abv = +this.findMyValues(response, 'beer_abv', true);
       beerFound.brewery = this.findMyValues(response, 'brewery_name');
       beerFound.country = this.findMyValues(response, 'country_name');
       beerFound.type = this.findMyValues(response, 'beer_style');

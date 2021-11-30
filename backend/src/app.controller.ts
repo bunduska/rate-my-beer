@@ -58,11 +58,7 @@ export class AppController {
 
   @Post('/savebeer')
   async savebeer(@Request() req) {
-    const newBeer: Beer  = req.body as Beer;
+    const newBeer: Beer = req.body as Beer;
     return this.beersService.saveNewBeer(newBeer);
-  }
-
-  @Get('/getbeerlist')
-  async getBeerList(@Request() req) {
   }
 }

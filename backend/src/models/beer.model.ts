@@ -4,31 +4,31 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 export class Beer {
   @PrimaryGeneratedColumn()
   id: number;
-  
+
   @Column()
   name: string;
-  
+
   @Column({ default: '' })
   type: string;
-  
-  @Column({ type: 'decimal', precision: 4, scale: 1, default: 0, }  )
+
+  @Column({ type: 'decimal', precision: 4, scale: 1, default: 0 })
   abv: number;
-  
+
   @Column({ default: '' })
   brewery: string;
-  
+
   @Column({ default: '' })
   country: string;
-  
-  @Column({ default: '' } )
+
+  @Column({ default: '' })
   city: string;
-  
+
   @Column({ default: '' })
   imageUrl: string;
-  
-  @Column({ type: "longtext" })
+
+  @Column({ type: 'longtext' })
   comment: string;
-  
+
   @Column()
   rating: number;
 }

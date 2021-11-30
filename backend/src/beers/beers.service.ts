@@ -23,7 +23,9 @@ export class BeersService {
   async saveNewBeer(beerToSave: Beer): Promise<{ message: string }> {
     try {
       await this.beersRepository.save(beerToSave);
-      return { message: `Beer entry succesfully saved (with id ${beerToSave.id}).` };
+      return {
+        message: `Beer entry succesfully saved (with id ${beerToSave.id}).`,
+      };
     } catch {
       return { message: 'Error when saving beer record!!!' };
     }
