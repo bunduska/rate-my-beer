@@ -26,7 +26,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { BeerlistComponent } from './home/beerlist/beerlist.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -60,7 +60,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatSliderModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

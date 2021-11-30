@@ -7,7 +7,6 @@ import { User } from 'src/models/user.model';
 
 @Injectable()
 export class BeersService {
-
   constructor(
     @InjectRepository(Beer)
     private beersRepository: Repository<Beer>,
@@ -38,12 +37,11 @@ export class BeersService {
     }
   }
 
-  async getBeerList(userId: number) : Promise<Beer[]> {
-
-   return this.beersRepository.createQueryBuilder()
-    .relation(User, 'beers')
-    .of(userId)
-    .loadMany();
+  async getBeerList(userId: number): Promise<Beer[]> {
+    return this.beersRepository
+      .createQueryBuilder()
+      .relation(User, 'beers')
+      .of(userId)
+      .loadMany();
   }
-
 }

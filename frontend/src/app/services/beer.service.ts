@@ -33,8 +33,7 @@ export class BeerService {
 
   getBeerList(): Observable<Beer[]> {
     return this.http.get<Beer[]>(`${environment.api_url}/beerlist`, {
-      headers: this.headers
-    })
-
+      headers: this.headers,
+    });
   }
 }
