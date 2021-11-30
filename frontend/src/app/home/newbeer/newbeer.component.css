@@ -1,4 +1,3 @@
-
 .search {
     display: flex;
     padding-top: 40px;
@@ -9,12 +8,12 @@
 .form {
     display: flex;
     flex-direction: column;
-    padding-left: 200px;
+    padding-left: 250px;
 }
+
 .form label {
     padding-right: 20px;
     padding-left: 20px;
-
 }
 
 .onerow {
@@ -29,7 +28,7 @@ img {
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
     background: rgba(117, 117, 117, 0.5);
     padding: 3px;
-  }
+}
 
 .mat-raised-button {
     margin-left: 30px;
@@ -40,7 +39,7 @@ img {
     align-items: baseline;
     justify-content: center;
     display: flex;
-    padding-top: 40px;
+    padding-top: 20px;
 }
 
 ::nd-deep .mat-form-field-wrapper {
@@ -59,9 +58,10 @@ img {
     width: 100px;
 }
 
- #imageUrl {
+#imageUrl {
     width: 600px;
 }
+
 .form-control {
     margin-bottom: 10px;
 }
@@ -69,4 +69,11 @@ img {
 .textarea {
     display: flex;
     margin-bottom: 20px;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

@@ -21,7 +21,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NewbeerComponent } from './home/newbeer/newbeer.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { TextFieldModule } from '@angular/cdk/text-field';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatTabsModule,
     MatDividerModule,
     TextFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

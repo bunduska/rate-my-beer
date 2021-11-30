@@ -1,27 +1,27 @@
 <div class="container">
   <form #f="ngForm" (ngSubmit)="save(f.value)">
-    
+
     <div class="search">
-      <mat-form-field appearance="fill" >
+      <mat-form-field appearance="fill">
         <mat-label>Enter search string</mat-label>
-      <input matInput name="search" id="search" [(ngModel)]="searchString"  type="text"  required>
+        <input matInput name="search" id="search" [(ngModel)]="searchString" type="text" required>
       </mat-form-field>
-      <button mat-raised-button color="accent" (click)="search()" >Search</button>
+      <button mat-raised-button color="accent" (click)="search()">Szürcs</button>
     </div>
 
     <div class="form">
       <div class="onerow">
-      <div class="name-field">
-        <label for="name">Name  </label>
-        <input #name="ngModel" [(ngModel)]="beer.name" name="name" id="name" type="text"  required>
-        <!-- <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+        <div class="name-field">
+          <label for="name">Name </label>
+          <input #name="ngModel" [(ngModel)]="beer.name" name="name" id="name" type="text" required>
+          <!-- <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
               name is required.
             </div> -->
-      </div>
-      <div class="form-group">
-        <label for="Type">Type</label>
-        <input  [(ngModel)]="beer.type" name="type" id="tpye" class="form-control">
-      </div>
+        </div>
+        <div class="form-group">
+          <label for="Type">Type</label>
+          <input [(ngModel)]="beer.type" name="type" id="tpye" class="form-control">
+        </div>
       </div>
 
       <div class="onerow">
@@ -31,37 +31,48 @@
         </div>
         <div class="form-group">
           <label for="abv">ABV</label>
-          <input [(ngModel)]="beer.abv" name="abv" id="abv" type="text" type="number"
-            class="form-control" required [min]="0">
+          <input [(ngModel)]="beer.abv" name="abv" id="abv" type="text" type="number" class="form-control" required
+            [min]="0">
         </div>
       </div>
 
       <div class="onerow">
         <div class="form-group">
           <label for="country">Country</label>
-          <input  [(ngModel)]="beer.country" name="country" id="country" class="form-control">
+          <input [(ngModel)]="beer.country" name="country" id="country" class="form-control">
         </div>
         <div class="form-group">
           <label for="city">City</label>
-          <input  [(ngModel)]="beer.city" name="city" id="city" class="form-control">
+          <input [(ngModel)]="beer.city" name="city" id="city" class="form-control">
         </div>
       </div>
       <div class="onerow">
-      <div class="form-group" class="textarea">
-        <label for="comment">Comment</label>
-        <textarea [(ngModel)]="beer.comment" name="comment" id="comment" class="form-control" rows="5" cols="80"></textarea>
-        <img [src]="beer.imageUrl" alt="">
-      </div></div>
+        <div class="form-group" class="textarea">
+          <label for="comment">Comment</label>
+          <textarea [(ngModel)]="beer.comment" name="comment" id="comment" class="form-control" rows="5"
+            cols="80"></textarea>
+          <img [src]="beer.imageUrl" alt="">
+        </div>
+      </div>
       <div class="pictures">
         <div class="form-group">
           <label for="imageUrl">Image URL</label>
-          <input  [(ngModel)]="beer.imageUrl" name="imageUrl" id="imageUrl" type="text"
-            class="form-control" required url>
+          <input [(ngModel)]="beer.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required
+            url>
         </div>
-      </div></div>
-    
+      </div>
+    </div>
+
+    <div class="rating">
+      Your current rating out of {{maxStars}}:
+      <button mat-icon-button color="accent" *ngFor="let r of starArr;index as i" (click)="onClick(i+1)">
+        <mat-icon> {{showIcon(i)}} </mat-icon>
+      </button>
+    </div>
+
     <div class="buttons">
-    <button mat-raised-button color="primary">Save</button>
-    <button  mat-raised-button color="warn" (click)="clear()">Clear</button>
-  </div></form>
+      <button mat-raised-button color="primary">Save</button>
+      <button mat-raised-button color="warn" (click)="clear()">Clear</button>
+    </div>
+  </form>
 </div>
