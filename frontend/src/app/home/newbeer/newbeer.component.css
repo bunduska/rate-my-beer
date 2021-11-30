@@ -20,8 +20,8 @@
     display: flex;
 }
 
-img {
-    size: 100px;
+img.beerlogo {
+    height: 100px;
     padding-left: 20px;
 }
 
@@ -74,6 +74,11 @@ img {
 .rating {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    padding-left: 320px;
     align-items: center;
+}
+
+.rating img {
+    width: 40px;
+    padding-left: 5px;
 }

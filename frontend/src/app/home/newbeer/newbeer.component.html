@@ -48,7 +48,7 @@
           <label for="comment">Comment</label>
           <textarea [(ngModel)]="beer.comment" name="comment" id="comment" class="form-control" rows="5"
             cols="80"></textarea>
-          <img [src]="beer.imageUrl" alt="">
+          <img class="beerlogo" [src]="beer.imageUrl" alt="">
         </div>
       </div>
       <div class="pictures">
@@ -61,9 +61,9 @@
     </div>
 
     <div class="rating">
-      Your current rating: {{rating}} out of {{maxStars}}.
-      <button mat-icon-button color="accent" *ngFor="let r of starArr;index as i" (click)="onClick(i+1)">
-        <mat-icon> {{showIcon(i)}} </mat-icon>
+      Your current rating, out of {{maxStars}}:
+      <button mat-icon-button *ngFor="let r of starArr;index as i" (click)="onClick(i+1)">
+        <img src={{showIcon(i)}} alt=""/>
       </button>
     </div>
 
