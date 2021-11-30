@@ -67,7 +67,7 @@ export class NewbeerComponent implements OnInit {
   }
 
   showIcon(index: number) {
-      return `../../../assets/${( this.rating >= index + 1 ? 'full' : 'empty' )}.svg`;
+    return `../../../assets/${this.rating >= index + 1 ? 'full' : 'empty'}.svg`;
   }
 
   openSnackBar(message: string) {
