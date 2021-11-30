@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Beer } from 'src/app/models/beer.model';
+import { BeerService } from 'src/app/services/beer.service';
 import { SearchBeerService } from 'src/app/services/search-beer.service';
 
 @Component({
@@ -8,7 +10,6 @@ import { SearchBeerService } from 'src/app/services/search-beer.service';
   styleUrls: ['./newbeer.component.css'],
 })
 export class NewbeerComponent implements OnInit {
-
   beer: Beer = {};
 
   searchString: string = '';
@@ -17,7 +18,13 @@ export class NewbeerComponent implements OnInit {
   maxStars: number = 10;
   starArr: number[] = [];
 
-  constructor(private searchBeerService: SearchBeerService) {}
+  messageFromBackend: string = '';
+
+  constructor(
+    private searchBeerService: SearchBeerService,
+    private beerService: BeerService,
+    private snackBar: MatSnackBar,
+  ) {}
 
   ngOnInit(): void {
     for (let i = 0; i < this.maxStars; i++) {
@@ -25,15 +32,33 @@ export class NewbeerComponent implements OnInit {
     }
   }
 
-  save(product: any) {}
+  async save() {
+    if (
+      this.beer.name === '' ||
+      this.beer.rating === 0 ||
+      this.beer.rating === undefined
+    ) {
+      this.openSnackBar('Name and ratings are mandatory!!!');
+    } else {
+      (await this.beerService.saveBeer(this.beer)).subscribe((res) => {
+        this.openSnackBar(res.message);
+        this.clear();
+      });
+    }
+  }
 
   clear() {
     this.beer = {};
     this.searchString = '';
+    this.rating = 0;
   }
 
   async search() {
-    this.beer = await this.searchBeerService.searchBeer(this.searchString);
+    if (this.searchString === '') {
+      this.openSnackBar('Enter a text to search!');
+    } else {
+      this.beer = await this.searchBeerService.searchBeer(this.searchString);
+    }
   }
 
   onClick(rating: number) {
@@ -47,5 +72,9 @@ export class NewbeerComponent implements OnInit {
     } else {
       return 'star_border';
     }
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'OK', { duration: 4000 });
   }
 }

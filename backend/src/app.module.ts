@@ -8,11 +8,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 import { ConfigModule } from './config/config.module';
 import { User } from './models/user.model';
+import { BeersService } from './beers/beers.service';
+import { Beer } from './models/beer.model';
+import { BeersModule } from './beers/beers.module';
 
 @Module({
   imports: [
     AuthModule,
     UsersModule,
+    BeersModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -21,7 +25,7 @@ import { User } from './models/user.model';
         port: configService.get('TYPEORM_PORT'),
         username: configService.get('TYPEORM_USERNAME'),
         password: configService.get('TYPEORM_PASSWORD'),
-        entities: [User],
+        entities: [User, Beer],
         database: configService.get('TYPEORM_DATABASE'),
         synchronize: configService.get('TYPEORM_SYNCHRONIZE'),
         logging: configService.get('TYPEORM_LOGGING'),
@@ -30,7 +34,7 @@ import { User } from './models/user.model';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, ConfigService],
+  providers: [AppService, ConfigService, BeersService],
 })
 export class AppModule {
   constructor(

@@ -1,3 +1,4 @@
+import { BeersService } from './beers/beers.service';
 import {
   Controller,
   Request,
@@ -9,12 +10,14 @@ import {
 import { AuthService } from './auth/auth.service';
 import { UsersService } from './users/users.service';
 import { environment } from './environments/environment';
+import { Beer } from './models/beer.model';
 
 @Controller()
 export class AppController {
   constructor(
     private authService: AuthService,
     private usersService: UsersService,
+    private beersService: BeersService,
   ) {}
 
   @Post('/login')
@@ -51,5 +54,15 @@ export class AppController {
       }
     }
     return res.redirect(`${environment.api_url_frontend}/register`);
+  }
+
+  @Post('/savebeer')
+  async savebeer(@Request() req) {
+    const newBeer: Beer  = req.body as Beer;
+    return this.beersService.saveNewBeer(newBeer);
+  }
+
+  @Get('/getbeerlist')
+  async getBeerList(@Request() req) {
   }
 }

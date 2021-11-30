@@ -1,5 +1,5 @@
 <div class="container">
-  <form #f="ngForm" (ngSubmit)="save(f.value)">
+  <form #f="ngForm">
 
     <div class="search">
       <mat-form-field appearance="fill">
@@ -14,9 +14,6 @@
         <div class="name-field">
           <label for="name">Name </label>
           <input #name="ngModel" [(ngModel)]="beer.name" name="name" id="name" type="text" required>
-          <!-- <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
-              name is required.
-            </div> -->
         </div>
         <div class="form-group">
           <label for="Type">Type</label>
@@ -64,14 +61,14 @@
     </div>
 
     <div class="rating">
-      Your current rating out of {{maxStars}}:
+      Your current rating: {{rating}} out of {{maxStars}}.
       <button mat-icon-button color="accent" *ngFor="let r of starArr;index as i" (click)="onClick(i+1)">
         <mat-icon> {{showIcon(i)}} </mat-icon>
       </button>
     </div>
 
     <div class="buttons">
-      <button mat-raised-button color="primary">Save</button>
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
       <button mat-raised-button color="warn" (click)="clear()">Clear</button>
     </div>
   </form>
