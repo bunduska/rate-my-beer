@@ -2,7 +2,7 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
         <div class="flex-container">
-
+            
             <div class="h1-content">
                 <h1><span class="h1-text">Sign up</span></h1>
             </div>
@@ -43,20 +43,17 @@
             </mat-error>
 
             <mat-checkbox color="primary" labelPosition="after" formControlName="isLegalAgeConfirmed">
-                Please confirm your are old enough to drink in your own country
+              <p> You are old enough to drink in your own country.</p> 
             </mat-checkbox>
             <mat-error *ngIf="submitted && f.isLegalAgeConfirmed.errors">
                 Please confirm!!!
             </mat-error>
-
             <div class="register-button">
-                <button mat-raised-button color="primary">
-                    Register
-                </button>
+                <button mat-raised-button color="primary">Register</button>
             </div>
             <br />
             <div class="button">
-                <button mat-raised-button routerLink="/login">Or Login</button>
+                <button mat-raised-button color="accent" routerLink="/login">Or Login</button>
             </div>
         </div>
     </form>

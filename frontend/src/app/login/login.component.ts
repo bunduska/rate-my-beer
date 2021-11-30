@@ -61,6 +61,6 @@ export class LoginComponent implements OnInit {
   }
 
   openSnackBar(message: string) {
-    this.snackBar.open(this.wrongInputMessage, 'OK');
+    this.snackBar.open(this.wrongInputMessage, 'OK', { duration: 4000 });
   }
 }

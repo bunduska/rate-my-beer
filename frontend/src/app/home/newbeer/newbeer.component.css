@@ -1,25 +1,72 @@
-.form-control {
-    width: 400px;
-}
 
 .search {
     display: flex;
-    align-items: center;
     padding-top: 40px;
-    padding-bottom: 40px;
+    align-items: center;
+    justify-content: center;
 }
 
 .form {
     display: flex;
     flex-direction: column;
+    padding-left: 200px;
+}
+.form label {
+    padding-right: 20px;
+    padding-left: 20px;
+
 }
 
 .onerow {
     display: flex;
 }
 
-
-
 img {
     size: 100px;
+    padding-left: 20px;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background: rgba(117, 117, 117, 0.5);
+    padding: 3px;
+  }
+
+.mat-raised-button {
+    margin-left: 30px;
+    margin-bottom: 16px;
+}
+
+.buttons {
+    align-items: baseline;
+    justify-content: center;
+    display: flex;
+    padding-top: 40px;
+}
+
+::nd-deep .mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+}
+
+#name {
+    width: 400px;
+}
+
+#brewery, #city, #country, #type {
+    width: 250px;
+}
+
+#abv {
+    width: 100px;
+}
+
+ #imageUrl {
+    width: 600px;
+}
+.form-control {
+    margin-bottom: 10px;
+}
+
+.textarea {
+    display: flex;
+    margin-bottom: 20px;
 }

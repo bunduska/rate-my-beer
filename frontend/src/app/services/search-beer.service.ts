@@ -37,7 +37,13 @@ export class SearchBeerService {
           .split('"')[1]
           .replace(':', '');
       }
-      return text.split(search)[1].split(',')[0].split('"')[2];
+      return text
+        .split(search)[1]
+        .split('",')[0]
+        .split('"')[2]
+        .split('\\n').join(' ')
+        .split('\\r').join('')
+        .replace(/\s\s+/g, ' ');
     } catch {
       return '';
     }
