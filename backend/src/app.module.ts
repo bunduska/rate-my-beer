@@ -1,6 +1,10 @@
-import { Module } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigService } from './config/config.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
@@ -11,6 +15,9 @@ import { User } from './models/user.model';
 import { BeersService } from './beers/beers.service';
 import { Beer } from './models/beer.model';
 import { BeersModule } from './beers/beers.module';
+import { AuthenticationMiddleware } from './middlewares/authentication.middleware';
+import { JwtModule } from '@nestjs/jwt';
+import { UsersService } from './users/users.service';
 
 @Module({
   imports: [
@@ -32,13 +39,28 @@ import { BeersModule } from './beers/beers.module';
       }),
       inject: [ConfigService],
     }),
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        secret: configService.get('JWT_SECRET_CODE'),
+        signOptions: {
+          expiresIn: 3600,
+        },
+      }),
+      inject: [ConfigService],
+    }),
   ],
   controllers: [AppController],
-  providers: [AppService, ConfigService, BeersService],
+  providers: [ ConfigService, BeersService, UsersService],
 })
-export class AppModule {
+export class AppModule implements NestModule {
   constructor(
     private connection: Connection,
     private configService: ConfigService,
   ) {}
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(AuthenticationMiddleware)
+      .forRoutes({ path: 'savebeer', method: RequestMethod.POST });
+  }
 }

@@ -9,4 +9,5 @@ export class Beer {
   imageUrl?: string;
   comment?: string;
   rating?: number;
+  date?: Date;
 }

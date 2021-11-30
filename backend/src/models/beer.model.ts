@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn } from 'typeorm';
+import { User } from './user.model';
 
 @Entity()
 export class Beer {
@@ -31,4 +32,14 @@ export class Beer {
 
   @Column()
   rating: number;
+
+  @CreateDateColumn()
+  date: Date;
+
+  @ManyToOne(() => User, (user) => user.beers, {
+    orphanedRowAction: 'delete',
+    onDelete: 'CASCADE',
+  })
+  user: User;
+
 }

@@ -57,6 +57,8 @@ export class NewbeerComponent implements OnInit {
     if (this.searchString === '') {
       this.openSnackBar('Enter a text to search!');
     } else {
+      this.beer = {};
+      this.rating = 0;
       this.beer = await this.searchBeerService.searchBeer(this.searchString);
     }
   }

@@ -14,7 +14,7 @@ import { ConfigService } from 'src/config/config.service';
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get('JWT_SECRET_CODE'),
         signOptions: {
-          expiresIn: 3600,
+          expiresIn: configService.get('JWT_TOKEN_EXPIRY'),
         },
       }),
       inject: [ConfigService],

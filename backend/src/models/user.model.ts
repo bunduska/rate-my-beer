@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Beer } from './beer.model';
 
 @Entity()
 export class User {
@@ -19,6 +20,12 @@ export class User {
 
   @Column({ default: false })
   isValidated: boolean;
+
+  @OneToMany(() => Beer, (beer) => beer.user, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
+  beers: Beer[];
 
   constructor(username: string, email: string, password: string) {
     this.username = username;

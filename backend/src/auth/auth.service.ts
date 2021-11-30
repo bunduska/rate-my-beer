@@ -24,7 +24,7 @@ export class AuthService {
     }
     if (validPassword && user.isValidated) {
       const payload = {
-        id: user.id,
+        userId: user.id,
         username: user.username,
         isAdmin: user.isAdmin,
         email: user.email,

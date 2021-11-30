@@ -11,6 +11,7 @@ import { AuthService } from './auth/auth.service';
 import { UsersService } from './users/users.service';
 import { environment } from './environments/environment';
 import { Beer } from './models/beer.model';
+import { User } from './models/user.model';
 
 @Controller()
 export class AppController {
@@ -28,16 +29,8 @@ export class AppController {
 
   @Post('/register')
   async register(@Request() req) {
-    const newUser: {
-      email: string;
-      password: string;
-      username: string;
-    } = req.body;
-    return this.usersService.register(
-      newUser.email,
-      newUser.password,
-      newUser.username,
-    );
+    const newUser: User  = req.body;
+    return this.usersService.register(newUser);
   }
 
   @Get('/user/validation')
@@ -58,7 +51,8 @@ export class AppController {
 
   @Post('/savebeer')
   async savebeer(@Request() req) {
-    const newBeer: Beer = req.body as Beer;
-    return this.beersService.saveNewBeer(newBeer);
+    const newBeer: Beer = req.body;
+    const userId: number = req.body.userId;
+    return this.beersService.saveNewBeer(newBeer, userId);
   }
 }

@@ -1,15 +1,16 @@
+import { UsersService } from './../users/users.service';
 import { Beer } from '../models/beer.model';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ConfigService } from '@nestjs/config';
-import { JwtService } from '@nestjs/jwt';
 import { Repository } from 'typeorm';
+import { User } from 'src/models/user.model';
 
 @Injectable()
 export class BeersService {
   constructor(
     @InjectRepository(Beer)
     private beersRepository: Repository<Beer>,
+    private usersService: UsersService
   ) {}
 
   async findAllBeersOfUser(): Promise<Beer[]> {
@@ -20,8 +21,10 @@ export class BeersService {
     return this.beersRepository.findOne({ where: { email } });
   }
 
-  async saveNewBeer(beerToSave: Beer): Promise<{ message: string }> {
+  async saveNewBeer(beerToSave: Beer, userId: number): Promise<{ message: string }> {
     try {
+      const user : User = await this.usersService.findUserById(userId);
+      beerToSave.user = user;
       await this.beersRepository.save(beerToSave);
       return {
         message: `Beer entry succesfully saved (with id ${beerToSave.id}).`,

@@ -25,21 +25,16 @@ export class UsersService {
     return this.usersRepository.findOne({ where: { email } });
   }
 
-  async register(
-    email: string,
-    password: string,
-    username: string,
-  ): Promise<User | { message: string }> {
-    if ((await this.findUserByEmail(email)) !== undefined) {
+  async findUserById(id: number): Promise<User | undefined> {
+    return this.usersRepository.findOne({ where: { id } });
+  }
+
+  async register(userToRegister : User)
+  : Promise<User | { message: string }> {
+    if ((await this.findUserByEmail(userToRegister.email)) !== undefined) {
       return { message: 'Email is already taken!' };
     }
-
-    const userToRegister: User = new User(
-      username,
-      email,
-      await hash(password),
-    );
-
+    userToRegister.password = await hash(userToRegister.password);
     await this.sendRegistrationValidator(userToRegister);
 
     try {
