@@ -10,7 +10,7 @@ export class BeersService {
   constructor(
     @InjectRepository(Beer)
     private beersRepository: Repository<Beer>,
-    private usersService: UsersService
+    private usersService: UsersService,
   ) {}
 
   async findAllBeersOfUser(): Promise<Beer[]> {
@@ -21,9 +21,12 @@ export class BeersService {
     return this.beersRepository.findOne({ where: { email } });
   }
 
-  async saveNewBeer(beerToSave: Beer, userId: number): Promise<{ message: string }> {
+  async saveNewBeer(
+    beerToSave: Beer,
+    userId: number,
+  ): Promise<{ message: string }> {
     try {
-      const user : User = await this.usersService.findUserById(userId);
+      const user: User = await this.usersService.findUserById(userId);
       beerToSave.user = user;
       await this.beersRepository.save(beerToSave);
       return {

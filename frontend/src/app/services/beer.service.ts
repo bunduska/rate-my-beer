@@ -14,10 +14,10 @@ export class BeerService {
 
   constructor(
     private http: HttpClient,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
   ) {
     const token = JSON.parse(
-      this.localStorageService.getItem('token') || (null as any)
+      this.localStorageService.getItem('token') || (null as any),
     ).token;
     this.headers = new HttpHeaders({ Authorization: `${PREFIX} ${token} ` });
   }
@@ -26,7 +26,7 @@ export class BeerService {
     return this.http.post<{ message: string }>(
       `${environment.api_url}/savebeer`,
       beer,
-      { headers: this.headers }
+      { headers: this.headers },
     );
   }
 }

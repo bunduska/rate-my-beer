@@ -51,7 +51,7 @@ import { UsersService } from './users/users.service';
     }),
   ],
   controllers: [AppController],
-  providers: [ ConfigService, BeersService, UsersService],
+  providers: [ConfigService, BeersService, UsersService],
 })
 export class AppModule implements NestModule {
   constructor(

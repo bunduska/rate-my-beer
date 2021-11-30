@@ -29,8 +29,7 @@ export class UsersService {
     return this.usersRepository.findOne({ where: { id } });
   }
 
-  async register(userToRegister : User)
-  : Promise<User | { message: string }> {
+  async register(userToRegister: User): Promise<User | { message: string }> {
     if ((await this.findUserByEmail(userToRegister.email)) !== undefined) {
       return { message: 'Email is already taken!' };
     }

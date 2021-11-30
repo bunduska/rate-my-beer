@@ -29,7 +29,7 @@ export class AppController {
 
   @Post('/register')
   async register(@Request() req) {
-    const newUser: User  = req.body;
+    const newUser: User = req.body;
     return this.usersService.register(newUser);
   }
 

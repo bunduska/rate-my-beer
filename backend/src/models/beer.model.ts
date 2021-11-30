@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  CreateDateColumn,
+} from 'typeorm';
 import { User } from './user.model';
 
 @Entity()
@@ -41,5 +47,4 @@ export class Beer {
     onDelete: 'CASCADE',
   })
   user: User;
-
 }

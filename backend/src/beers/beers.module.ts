@@ -10,7 +10,7 @@ import { User } from 'src/models/user.model';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Beer,User]),
+    TypeOrmModule.forFeature([Beer, User]),
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
