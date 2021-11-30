@@ -1,0 +1,71 @@
+
+.filter {
+    width: 50%;
+    padding-left: 25%;
+    padding-top: 20px;
+    align-items: center;
+}
+
+.beertable {
+    padding-left: 60px;
+    width: 90%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+td, th {
+    width: 25%;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background: rgba(117, 117, 117, 0.5);
+    padding: 3px;
+}
+
+.mat-column-name {
+    padding-left: 10%;
+    flex: 0 0 15% !important;
+    width: 25% !important;
+}
+
+.mat-column-abv {
+    flex: 0 0 5% !important;
+    width: 5% !important;
+}
+
+.mat-column-type {
+    flex: 0 0 10% !important;
+    width: 10% !important;
+}
+
+.mat-column-country {
+    flex: 0 0 10% !important;
+    width: 10% !important;
+}
+
+.mat-column-brewery {
+    flex: 0 0 15% !important;
+    width: 15% !important;
+}
+
+.mat-column-rating {
+    flex: 0 0 5% !important;
+    width: 5% !important;
+}
+
+.mat-column-date {
+    flex: 0 0 10% !important;
+    width: 10% !important;
+}
+
+.mat-header-cell {
+    background-color: darkolivegreen;
+    font-size: large;
+ }
+
+ th.mat-sort-header-sorted {
+    color: black;
+  }

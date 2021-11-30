@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Beer } from '../models/beer.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -28,5 +29,12 @@ export class BeerService {
       beer,
       { headers: this.headers },
     );
+  }
+
+  getBeerList(): Observable<Beer[]> {
+    return this.http.get<Beer[]>(`${environment.api_url}/beerlist`, {
+      headers: this.headers
+    })
+
   }
 }

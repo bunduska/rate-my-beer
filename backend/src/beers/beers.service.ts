@@ -7,6 +7,7 @@ import { User } from 'src/models/user.model';
 
 @Injectable()
 export class BeersService {
+
   constructor(
     @InjectRepository(Beer)
     private beersRepository: Repository<Beer>,
@@ -36,4 +37,13 @@ export class BeersService {
       return { message: 'Error when saving beer record!!!' };
     }
   }
+
+  async getBeerList(userId: number) : Promise<Beer[]> {
+
+   return this.beersRepository.createQueryBuilder()
+    .relation(User, 'beers')
+    .of(userId)
+    .loadMany();
+  }
+
 }

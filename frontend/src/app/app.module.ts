@@ -23,6 +23,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
+import { BeerlistComponent } from './home/beerlist/beerlist.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,7 @@ import { MatSliderModule } from '@angular/material/slider';
     LoginComponent,
     RegisterComponent,
     NewbeerComponent,
+    BeerlistComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +58,9 @@ import { MatSliderModule } from '@angular/material/slider';
     TextFieldModule,
     MatButtonModule,
     MatSliderModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent],

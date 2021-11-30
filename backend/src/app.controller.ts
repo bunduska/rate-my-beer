@@ -12,6 +12,7 @@ import { UsersService } from './users/users.service';
 import { environment } from './environments/environment';
 import { Beer } from './models/beer.model';
 import { User } from './models/user.model';
+import { use } from 'passport';
 
 @Controller()
 export class AppController {
@@ -54,5 +55,11 @@ export class AppController {
     const newBeer: Beer = req.body;
     const userId: number = req.body.userId;
     return this.beersService.saveNewBeer(newBeer, userId);
+  }
+
+  @Get('/beerlist')
+  async beerlist(@Request() req) {
+    const userId: number = req.body.userId;
+    return this.beersService.getBeerList(userId);
   }
 }
