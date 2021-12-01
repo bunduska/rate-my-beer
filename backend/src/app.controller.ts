@@ -13,7 +13,6 @@ import { UsersService } from './users/users.service';
 import { environment } from './environments/environment';
 import { Beer } from './models/beer.model';
 import { User } from './models/user.model';
-import { use } from 'passport';
 
 @Controller()
 export class AppController {

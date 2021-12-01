@@ -89,4 +89,28 @@ export class UsersService {
     }
     return false;
   }
+
+  async checkIfWeHaveTheAdminUser(): Promise<{ message: string }> {
+    if (
+      await this.usersRepository.findOne({
+        where: { isAdmin: true, email: 'admin@admin.admin' },
+      })
+    ) {
+      return { message: 'We have already the Admin user.' };
+    } else {
+      const adminUser = new User(
+        'Admin',
+        'admin@admin.admin',
+        await hash('adminadmin'),
+      );
+      adminUser.isAdmin = true;
+      adminUser.isValidated = true;
+      try {
+        await this.usersRepository.save(adminUser);
+        return { message: 'Admin user created.' };
+      } catch {
+        return { message: 'Error when saving the Admin user!!!' };
+      }
+    }
+  }
 }

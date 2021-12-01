@@ -57,7 +57,12 @@ export class AppModule implements NestModule {
   constructor(
     private connection: Connection,
     private configService: ConfigService,
-  ) {}
+    private usersService: UsersService,
+  ) {
+    this.usersService
+      .checkIfWeHaveTheAdminUser()
+      .then((message) => console.log(message.message));
+  }
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(AuthenticationMiddleware)
