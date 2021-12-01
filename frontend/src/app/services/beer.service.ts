@@ -43,5 +43,4 @@ export class BeerService {
   updateBeerList(beers: Beer[]): void {
     this.beerSource.next(beers);
   }
-
 }

@@ -38,7 +38,7 @@ export class BeerlistComponent implements OnInit {
     });
     this.beerService.currentBeerList.subscribe((beers) => {
       this.updateBeers(beers);
-    })
+    });
   }
 
   updateBeers(beers: Beer[]) {
