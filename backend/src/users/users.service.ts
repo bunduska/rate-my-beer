@@ -113,4 +113,28 @@ export class UsersService {
       }
     }
   }
+
+  async saveUser(
+    userToSave: User
+  ): Promise<{ message: string }> {
+    try {
+      await this.usersRepository.save(userToSave);
+      return {
+        message: `User entry succesfully saved (id ${userToSave.id}).`,
+      };
+    } catch {
+      return { message: 'Error when saving user record!!!' };
+    }
+  }
+
+  async deleteUser(userToDelete: User): Promise<{ message: string }> {
+    try {
+      await this.usersRepository.delete(userToDelete.id);
+      return {
+        message: `User was deleted.`,
+      };
+    } catch {
+      return { message: 'Error when deleting user record!!!' };
+    }
+  }
 }

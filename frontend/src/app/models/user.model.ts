@@ -4,6 +4,4 @@ export class User {
   password?: string;
   email?: string;
   isAdmin?: boolean;
-  token?: string;
-  message?: string;
 }

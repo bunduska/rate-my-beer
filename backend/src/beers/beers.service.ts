@@ -13,14 +13,6 @@ export class BeersService {
     private usersService: UsersService,
   ) {}
 
-  async findAllBeersOfUser(): Promise<Beer[]> {
-    return this.beersRepository.find();
-  }
-
-  async findUserByEmail(email: string): Promise<Beer | undefined> {
-    return this.beersRepository.findOne({ where: { email } });
-  }
-
   async saveBeer(
     beerToSave: Beer,
     userId: number,

@@ -18,6 +18,7 @@ import { BeersModule } from './beers/beers.module';
 import { AuthenticationMiddleware } from './middlewares/authentication.middleware';
 import { JwtModule } from '@nestjs/jwt';
 import { UsersService } from './users/users.service';
+import { AuthorizationMiddleware } from './middlewares/authorization.middleware';
 
 @Module({
   imports: [
@@ -70,6 +71,13 @@ export class AppModule implements NestModule {
         { path: 'savebeer', method: RequestMethod.POST },
         { path: 'beerlist', method: RequestMethod.GET },
         { path: 'deletebeer', method: RequestMethod.DELETE },
+      );
+      consumer
+      .apply(AuthorizationMiddleware)
+      .forRoutes(
+        { path: 'user/list', method: RequestMethod.GET },
+        { path: 'user/update', method: RequestMethod.POST },
+        { path: 'user/delete', method: RequestMethod.DELETE },
       );
   }
 }

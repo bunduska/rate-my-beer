@@ -68,4 +68,22 @@ export class AppController {
     const beer: Beer = req.body;
     return this.beersService.deleteBeer(beer);
   }
+
+  @Post('/user/update')
+  async saveUser(@Request() req) {
+    const user: User = req.body;
+    return this.usersService.saveUser(user);
+  }
+
+  @Get('/user/list')
+  async userlist(@Request() req) {
+    return this.usersService.findAllUsers();
+  }
+
+  @Delete('/delete/user')
+  async deleteuser(@Request() req) {
+    const user: User = req.body;
+    return this.usersService.deleteUser(user);
+  }
+
 }
