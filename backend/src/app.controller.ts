@@ -69,5 +69,4 @@ export class AppController {
     const beer: Beer = req.body;
     return this.beersService.deleteBeer(beer);
   }
-
 }

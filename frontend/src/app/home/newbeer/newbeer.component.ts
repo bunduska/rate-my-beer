@@ -40,7 +40,7 @@ export class NewbeerComponent implements OnInit {
     ) {
       this.openSnackBar('Name and ratings are mandatory!!!');
     } else {
-      (this.beerService.saveBeer(this.beer)).subscribe((res : any) => {
+      this.beerService.saveBeer(this.beer).subscribe((res: any) => {
         this.openSnackBar(res.message);
         this.clear();
         this.beerService.getBeerList().subscribe((beers) => {

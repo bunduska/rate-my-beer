@@ -39,7 +39,7 @@ export class BeersService {
 
   async deleteBeer(beerToDelete: Beer): Promise<{ message: string }> {
     try {
-      await this.beersRepository.delete(beerToDelete.id)
+      await this.beersRepository.delete(beerToDelete.id);
       return {
         message: `Beer entry was deleted.`,
       };

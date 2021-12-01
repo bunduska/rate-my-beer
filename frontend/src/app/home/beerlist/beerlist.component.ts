@@ -73,5 +73,4 @@ export class BeerlistComponent implements OnInit {
     this.matDialog.open(BeerModalComponent, dialogConfig);
     this.beerService.setCurrentBeer(beer);
   }
-
 }

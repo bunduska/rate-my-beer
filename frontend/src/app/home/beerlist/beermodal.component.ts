@@ -37,26 +37,26 @@ export class BeerModalComponent implements OnInit {
       city: [this.currentBeer.city],
       imageUrl: [this.currentBeer.imageUrl],
       comment: [this.currentBeer.comment],
-      rating: [this.currentBeer.rating, [Validators.min(0), Validators.required]],
+      rating: [
+        this.currentBeer.rating,
+        [Validators.min(0), Validators.required],
+      ],
       date: [this.currentBeer.date, [Validators.required]],
     });
   }
 
   updateBeerInfo() {
-    this.beerService.saveBeer(this.beerForm.value)
-      .subscribe((res: any) => {
-        this.beerService.getBeerList().subscribe((beers) => {
-          this.beerService.updateBeerList(beers as Beer[]);
-        });
-        alert(res.message);
-        this.dialog.closeAll();
+    this.beerService.saveBeer(this.beerForm.value).subscribe((res: any) => {
+      this.beerService.getBeerList().subscribe((beers) => {
+        this.beerService.updateBeerList(beers as Beer[]);
       });
+      alert(res.message);
+      this.dialog.closeAll();
+    });
   }
 
   deleteBeerInfo() {
-    if (
-      confirm(`Are you sure to delete '${this.currentBeer.name}' ?`)
-    ) {
+    if (confirm(`Are you sure to delete '${this.currentBeer.name}' ?`)) {
       this.beerService.deleteBeer(this.beerForm.value).subscribe((res: any) => {
         this.beerService.getBeerList().subscribe((beers) => {
           this.beerService.updateBeerList(beers as Beer[]);
@@ -70,5 +70,4 @@ export class BeerModalComponent implements OnInit {
   closeDialog(): void {
     this.dialog.closeAll();
   }
- 
 }
