@@ -5,6 +5,8 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Beer } from 'src/app/models/beer.model';
 import { BeerService } from 'src/app/services/beer.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { BeerModalComponent } from './beermodal.component';
 
 @Component({
   selector: 'beerlist',
@@ -30,11 +32,12 @@ export class BeerlistComponent implements OnInit {
   constructor(
     private beerService: BeerService,
     private _liveAnnouncer: LiveAnnouncer,
+    private matDialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
     this.beerService.getBeerList().subscribe((beers) => {
-      this.updateBeers(beers);
+      this.updateBeers(beers as Beer[]);
     });
     this.beerService.currentBeerList.subscribe((beers) => {
       this.updateBeers(beers);
@@ -63,4 +66,12 @@ export class BeerlistComponent implements OnInit {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
+
+  openModal(beer: Beer) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    this.matDialog.open(BeerModalComponent, dialogConfig);
+    this.beerService.setCurrentBeer(beer);
+  }
+
 }

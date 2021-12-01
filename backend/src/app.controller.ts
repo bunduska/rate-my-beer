@@ -6,6 +6,7 @@ import {
   Get,
   Query,
   Response,
+  Delete,
 } from '@nestjs/common';
 import { AuthService } from './auth/auth.service';
 import { UsersService } from './users/users.service';
@@ -52,9 +53,9 @@ export class AppController {
 
   @Post('/savebeer')
   async savebeer(@Request() req) {
-    const newBeer: Beer = req.body;
+    const beer: Beer = req.body;
     const userId: number = req.body.userId;
-    return this.beersService.saveNewBeer(newBeer, userId);
+    return this.beersService.saveBeer(beer, userId);
   }
 
   @Get('/beerlist')
@@ -62,4 +63,11 @@ export class AppController {
     const userId: number = req.body.userId;
     return this.beersService.getBeerList(userId);
   }
+
+  @Delete('/deletebeer')
+  async deletebeer(@Request() req) {
+    const beer: Beer = req.body;
+    return this.beersService.deleteBeer(beer);
+  }
+
 }

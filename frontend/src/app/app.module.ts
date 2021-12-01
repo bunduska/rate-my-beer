@@ -27,6 +27,9 @@ import { BeerlistComponent } from './home/beerlist/beerlist.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { BeerModalComponent } from './home/beerlist/beermodal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { MatSortModule } from '@angular/material/sort';
     RegisterComponent,
     NewbeerComponent,
     BeerlistComponent,
+    BeerModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +65,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatDialogModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

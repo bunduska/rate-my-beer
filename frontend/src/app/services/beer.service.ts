@@ -1,9 +1,15 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Beer } from '../models/beer.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { LocalStorageService } from './localstorage.service';
+import { catchError } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 const PREFIX = 'Bearer';
 
@@ -13,12 +19,16 @@ const PREFIX = 'Bearer';
 export class BeerService {
   private headers: HttpHeaders | undefined;
 
-  private beerSource = new BehaviorSubject<Beer[]>([]);
-  currentBeerList = this.beerSource.asObservable();
+  private beerListSource = new BehaviorSubject<Beer[]>([]);
+  currentBeerList = this.beerListSource.asObservable();
+
+  private beerSource = new BehaviorSubject<Beer>({});
+  currentBeer = this.beerSource.asObservable();
 
   constructor(
     private http: HttpClient,
     private localStorageService: LocalStorageService,
+    private authService: AuthService,
   ) {
     const token = JSON.parse(
       this.localStorageService.getItem('token') || (null as any),
@@ -26,21 +36,54 @@ export class BeerService {
     this.headers = new HttpHeaders({ Authorization: `${PREFIX} ${token} ` });
   }
 
-  async saveBeer(beer: Beer) {
-    return this.http.post<{ message: string }>(
-      `${environment.api_url}/savebeer`,
-      beer,
-      { headers: this.headers },
-    );
+  saveBeer(beer: Beer): Observable<void | { message: string }> {
+    return this.http
+      .post<{ message: string }>(`${environment.api_url}/savebeer`, beer, {
+        headers: this.headers,
+      })
+      .pipe(
+        catchError(async (err: HttpErrorResponse) => {
+          if (err.status === 401) {
+            this.authService.logout();
+          }
+        }),
+      );
   }
 
-  getBeerList(): Observable<Beer[]> {
-    return this.http.get<Beer[]>(`${environment.api_url}/beerlist`, {
-      headers: this.headers,
-    });
+  deleteBeer(beer: Beer): Observable<void | { message: string }> {
+    return this.http
+      .delete<{ message: string }>(`${environment.api_url}/deletebeer`, {
+        headers: this.headers,
+        body: beer,
+      })
+      .pipe(
+        catchError(async (err: HttpErrorResponse) => {
+          if (err.status === 401) {
+            this.authService.logout();
+          }
+        }),
+      );
+  }
+
+  getBeerList(): Observable<void | Beer[]> {
+    return this.http
+      .get<Beer[]>(`${environment.api_url}/beerlist`, {
+        headers: this.headers,
+      })
+      .pipe(
+        catchError(async (err: HttpErrorResponse) => {
+          if (err.status === 401) {
+            this.authService.logout();
+          }
+        }),
+      );
   }
 
   updateBeerList(beers: Beer[]): void {
-    this.beerSource.next(beers);
+    this.beerListSource.next(beers);
+  }
+
+  setCurrentBeer(beer: Beer): void {
+    this.beerSource.next(beer);
   }
 }

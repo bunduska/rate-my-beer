@@ -21,7 +21,7 @@ export class BeersService {
     return this.beersRepository.findOne({ where: { email } });
   }
 
-  async saveNewBeer(
+  async saveBeer(
     beerToSave: Beer,
     userId: number,
   ): Promise<{ message: string }> {
@@ -30,10 +30,21 @@ export class BeersService {
       beerToSave.user = user;
       await this.beersRepository.save(beerToSave);
       return {
-        message: `Beer entry succesfully saved (with id ${beerToSave.id}).`,
+        message: `Beer entry succesfully saved (id ${beerToSave.id}).`,
       };
     } catch {
       return { message: 'Error when saving beer record!!!' };
+    }
+  }
+
+  async deleteBeer(beerToDelete: Beer): Promise<{ message: string }> {
+    try {
+      await this.beersRepository.delete(beerToDelete.id)
+      return {
+        message: `Beer entry was deleted.`,
+      };
+    } catch {
+      return { message: 'Error when deleting beer record!!!' };
     }
   }
 

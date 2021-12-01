@@ -64,6 +64,7 @@ export class AppModule implements NestModule {
       .forRoutes(
         { path: 'savebeer', method: RequestMethod.POST },
         { path: 'beerlist', method: RequestMethod.GET },
+        { path: 'deletebeer', method: RequestMethod.DELETE },
       );
   }
 }

@@ -1,0 +1,79 @@
+<div class="container" color="accent">
+    <form [formGroup]="beerForm">
+
+        <mat-card-header>
+            <mat-card-title>Beer info</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div class="name">
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input formControlName="name" type="text" matInput placeholder="Your Name" required />
+                    <mat-error>This field is required.</mat-error>
+                </mat-form-field>
+               <img class="picture" [src]="currentBeer.imageUrl" alt="">
+            </div>
+            <div class="onerow">
+                <mat-form-field appearance="fill">
+                    <mat-label>Style</mat-label>
+                    <input formControlName="type" type="text" matInput />
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" [style.width.px]=80>
+                    <mat-label>ABV</mat-label>
+                    <input formControlName="abv" type="number" matInput min="0" />
+                </mat-form-field>
+
+                <mat-form-field appearance="fill"  [style.width.px]=80>
+                    <mat-label>Rating</mat-label>
+                    <input formControlName="rating" type="number" matInput min="0" />
+                </mat-form-field>    
+
+            </div>
+            <div class="onerow">
+                <mat-form-field appearance="fill" [style.width.px]=420>
+                    <mat-label>Brewery</mat-label>
+                    <input formControlName="brewery" type="text" matInput />
+                </mat-form-field>
+            </div>
+            <div class="onerow">
+                <mat-form-field appearance="fill">
+                    <mat-label>Country</mat-label>
+                    <input formControlName="country" type="text" matInput />
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>City</mat-label>
+                    <input formControlName="city" type="text" matInput />
+                </mat-form-field>
+            </div>
+            <div class="onerow">
+                <mat-form-field appearance="fill"  [style.width.px]=420>
+                    <mat-label>Image Url</mat-label>
+                    <input formControlName="imageUrl" type="text" matInput />
+                </mat-form-field>
+            </div>
+            <div class="onerow" >
+                <mat-form-field appearance="fill" class="comment">
+                    <mat-label>Comment</mat-label>
+                    <textarea formControlName="comment" type="text" matInput rows="4"
+                    [style.width.px]=420></textarea>
+                </mat-form-field>
+            </div>
+      
+        </mat-card-content>
+        <div class="buttons">
+            <mat-card-actions class="btn-sec">
+                <button mat-raised-button color="primary" [disabled]="!beerForm.valid"
+                    (click)="updateBeerInfo()">Update</button>
+
+                <button mat-raised-button color="warn" [disabled]="!beerForm.valid"
+                    (click)="deleteBeerInfo()">Delete</button>
+
+                <button mat-raised-button class="Discard-btn" color="accent" (click)="closeDialog()">Cancel</button>
+
+            </mat-card-actions>
+        </div>
+    </form>
+</div>
