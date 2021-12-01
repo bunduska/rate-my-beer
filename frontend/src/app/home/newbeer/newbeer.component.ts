@@ -43,6 +43,9 @@ export class NewbeerComponent implements OnInit {
       (await this.beerService.saveBeer(this.beer)).subscribe((res) => {
         this.openSnackBar(res.message);
         this.clear();
+        this.beerService.getBeerList().subscribe((beers) => {
+          this.beerService.updateBeerList(beers);
+        });
       });
     }
   }

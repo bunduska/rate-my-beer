@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Beer } from '../models/beer.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -12,6 +12,9 @@ const PREFIX = 'Bearer';
 })
 export class BeerService {
   private headers: HttpHeaders | undefined;
+
+  private beerSource = new BehaviorSubject<Beer[]>([]);
+  currentBeerList = this.beerSource.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -36,4 +39,9 @@ export class BeerService {
       headers: this.headers,
     });
   }
+
+  updateBeerList(beers: Beer[]): void {
+    this.beerSource.next(beers);
+  }
+
 }

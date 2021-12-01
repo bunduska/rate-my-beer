@@ -34,11 +34,18 @@ export class BeerlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.beerService.getBeerList().subscribe((beers) => {
-      this.beers = beers;
-      this.dataSource = new MatTableDataSource(this.beers);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      this.updateBeers(beers);
     });
+    this.beerService.currentBeerList.subscribe((beers) => {
+      this.updateBeers(beers);
+    })
+  }
+
+  updateBeers(beers: Beer[]) {
+    this.beers = beers;
+    this.dataSource = new MatTableDataSource(this.beers);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
