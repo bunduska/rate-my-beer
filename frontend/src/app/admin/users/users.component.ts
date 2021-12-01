@@ -22,13 +22,11 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private manageUserService: ManageUsersService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
   ) {}
 
   ngOnInit(): void {
-
     this.manageUserService.getAllUsers().subscribe((users: User[]) => {
- 
       this.dataSource = users;
       const { userId } = this.authenticationService.jwtDecode();
       for (let currentUser of this.dataSource) {
@@ -41,7 +39,7 @@ export class UsersComponent implements OnInit {
   toggleAdminRight(user: User): void {
     if (
       confirm(
-        `Are you sure to change the admin right for ${user.name} with id: ${user.id}?`
+        `Are you sure to change the admin right for ${user.name} with id: ${user.id}?`,
       )
     ) {
       this.manageUserService.setRight(user).subscribe((response) => {

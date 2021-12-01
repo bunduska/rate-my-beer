@@ -114,9 +114,7 @@ export class UsersService {
     }
   }
 
-  async saveUser(
-    userToSave: User
-  ): Promise<{ message: string }> {
+  async saveUser(userToSave: User): Promise<{ message: string }> {
     try {
       await this.usersRepository.save(userToSave);
       return {

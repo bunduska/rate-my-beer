@@ -72,7 +72,7 @@ export class AppModule implements NestModule {
         { path: 'beerlist', method: RequestMethod.GET },
         { path: 'deletebeer', method: RequestMethod.DELETE },
       );
-      consumer
+    consumer
       .apply(AuthorizationMiddleware)
       .forRoutes(
         { path: 'user/list', method: RequestMethod.GET },

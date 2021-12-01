@@ -79,6 +79,4 @@ export class ManageUserService {
   updateUserList(users: User[]): void {
     this.userListSource.next(users);
   }
-
-
 }

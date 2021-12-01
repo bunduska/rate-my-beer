@@ -85,5 +85,4 @@ export class AppController {
     const user: User = req.body;
     return this.usersService.deleteUser(user);
   }
-
 }
