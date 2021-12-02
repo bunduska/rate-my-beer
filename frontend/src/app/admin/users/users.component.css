@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+}
+
+th {
+    font-weight: bolder;
+    color: black;
+    padding: 0 2vw 0 2vw;
+}
+
+
+td {
+    padding: 0 2vw 0 2vw;
+}

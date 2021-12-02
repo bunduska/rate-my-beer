@@ -9,8 +9,6 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomeComponent {
   currentUser: User | any;
-  displayNewBeerComponent: boolean = false;
-  displayBeerListComponent: boolean = true;
 
   constructor(private authService: AuthService) {}
 
@@ -19,12 +17,7 @@ export class HomeComponent {
   }
 
   isCurrentUserAdmin(): boolean {
-    return !this.authService.getCurrentUser()!.isAdmin;
-  }
-
-  addnewbeer(): void {
-    this.displayNewBeerComponent = true;
-    this.displayBeerListComponent = false;
+    return this.authService.getCurrentUser()!.isAdmin;
   }
 
   logout() {

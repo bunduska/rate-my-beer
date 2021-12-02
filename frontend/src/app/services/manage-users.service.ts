@@ -16,11 +16,11 @@ const PREFIX = 'Bearer';
 @Injectable({
   providedIn: 'root',
 })
-export class ManageUserService {
+export class ManageUsersService {
   private headers: HttpHeaders | undefined;
 
   private userListSource = new BehaviorSubject<User[]>([]);
-  currentuserList = this.userListSource.asObservable();
+  currentUserList = this.userListSource.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -62,7 +62,7 @@ export class ManageUserService {
       );
   }
 
-  getuserList(): Observable<void | User[]> {
+  getAllUsers(): Observable<void | User[]> {
     return this.http
       .get<User[]>(`${environment.api_url}/user/list`, {
         headers: this.headers,

@@ -17,10 +17,6 @@ export class UsersService {
     private jwtService: JwtService,
   ) {}
 
-  async findAllUsers(): Promise<User[]> {
-    return this.usersRepository.find();
-  }
-
   async findUserByEmail(email: string): Promise<User | undefined> {
     return this.usersRepository.findOne({ where: { email } });
   }
@@ -112,6 +108,16 @@ export class UsersService {
         return { message: 'Error when saving the Admin user!!!' };
       }
     }
+  }
+
+  async findAllUsers(): Promise<User[]> {
+    return this.usersRepository.find();
+  }
+
+  async findAllUsersExceptTheCurrentOne(currentUser: number): Promise<User[]> {
+    return (await this.usersRepository.find()).filter(
+      (user) => user.id !== currentUser,
+    );
   }
 
   async saveUser(userToSave: User): Promise<{ message: string }> {

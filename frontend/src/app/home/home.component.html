@@ -1,21 +1,26 @@
-<mat-toolbar >
-    <p class="title">Hello {{getCurrentUserName()}} - Please drink <a href="https://responsibledrinking.eu/"> responsibly</a>!</p>
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>menu</mat-icon>
+<mat-toolbar>
+  <p class="title">Hello {{getCurrentUserName()}}<span *ngIf="!isCurrentUserAdmin()"> - Please drink <a
+        href="https://responsibledrinking.eu/">
+        responsibly</a>!</span></p>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [disabled]="!isCurrentUserAdmin()" routerLink="manageusers">
+      <mat-icon>supervised_user_circle</mat-icon>
+      <span>Update users</span>
     </button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item [disabled]="isCurrentUserAdmin()">
-            <mat-icon>supervised_user_circle</mat-icon>
-            <span>Update users</span>
-        </button>
-        <button mat-menu-item (click)="logout()">
-            <mat-icon>logout</mat-icon>
-            <span>Log Off</span>
-        </button>
-    </mat-menu>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Log Off</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>
 
-<mat-tab-group mat-stretch-tabs color="primary" backgroundColor="accent">
+<div *ngIf="!isCurrentUserAdmin() ; else adminStuff">
+ 
+  <mat-tab-group mat-stretch-tabs color="primary" backgroundColor="accent">
+ 
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon class="example-tab-icon">format_list_bulleted</mat-icon>
@@ -23,7 +28,7 @@
       </ng-template>
       <beerlist></beerlist>
     </mat-tab>
-  
+
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon class="example-tab-icon">local_drink</mat-icon>
@@ -31,5 +36,10 @@
       </ng-template>
       <newbeer></newbeer>
     </mat-tab>
-  
+
   </mat-tab-group>
+</div>
+
+<ng-template #adminStuff>
+  <users></users>
+</ng-template>

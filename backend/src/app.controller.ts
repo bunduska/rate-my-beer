@@ -77,7 +77,8 @@ export class AppController {
 
   @Get('/user/list')
   async userlist(@Request() req) {
-    return this.usersService.findAllUsers();
+    const userId: number = req.body.userId;
+    return this.usersService.findAllUsersExceptTheCurrentOne(userId);
   }
 
   @Delete('/delete/user')

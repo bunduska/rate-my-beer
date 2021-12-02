@@ -19,9 +19,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private localStorageService: LocalStorageService,
-  ) {
-    this.getCurrentUser();
-  }
+  ) {}
 
   login(email: string, password: string): Observable<User> {
     return this.http

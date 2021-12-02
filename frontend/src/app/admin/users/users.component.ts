@@ -1,69 +1,60 @@
-import { ManageUsersService } from './../core/services/manageusers.service';
-import { User } from './../core/models/user.model';
+import { ManageUsersService } from '../../services/manage-users.service';
+import { User } from '../../models/user.model';
 import { Component, OnInit } from '@angular/core';
-
-import { AuthenticationService } from '../core';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'manageusers',
-  templateUrl: './manageusers.component.html',
-  styleUrls: ['./manageusers.component.sass'],
+  selector: 'users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
-  displayedColumns: string[] = [
-    'id',
-    'admin',
-    'name',
-    'email',
-    'newsletter',
-    'delete',
-  ];
-  dataSource: User[] = [];
+  displayedColumns: string[] = ['id', 'name', 'email', 'admin', 'delete'];
+  users: User[] = [];
+  dataSource!: MatTableDataSource<User>;
 
-  constructor(
-    private manageUserService: ManageUsersService,
-    private authenticationService: AuthenticationService,
-  ) {}
+  constructor(private manageUserService: ManageUsersService) {}
 
   ngOnInit(): void {
-    this.manageUserService.getAllUsers().subscribe((users: User[]) => {
-      this.dataSource = users;
-      const { userId } = this.authenticationService.jwtDecode();
-      for (let currentUser of this.dataSource) {
-        if (userId === currentUser.id)
-          this.dataSource.splice(this.dataSource.indexOf(currentUser), 1);
-      }
+    this.manageUserService.getAllUsers().subscribe((users) => {
+      this.updateUserlist(users as User[]);
     });
+    this.manageUserService.currentUserList.subscribe((users) => {
+      this.updateUserlist(users);
+    });
+  }
+
+  updateUserlist(users: User[]) {
+    this.users = users;
+    this.dataSource = new MatTableDataSource(this.users);
   }
 
   toggleAdminRight(user: User): void {
     if (
       confirm(
-        `Are you sure to change the admin right for ${user.name} with id: ${user.id}?`,
+        `Are you sure to change the admin right for ${user.username} with id: ${user.id}?`,
       )
     ) {
-      this.manageUserService.setRight(user).subscribe((response) => {
-        this.ngOnInit();
-        alert(response.message);
+      user.isAdmin = !user.isAdmin;
+      this.manageUserService.saveuser(user).subscribe((res: any) => {
+        this.manageUserService.getAllUsers().subscribe((users) => {
+          this.updateUserlist(users as User[]);
+        });
       });
     }
   }
 
   delete(user: User): void {
     if (
-      confirm(`Are you sure to delete ${user.name} user with id: ${user.id}?`)
+      confirm(
+        `Are you sure to delete ${user.username} user with id: ${user.id}?`,
+      )
     ) {
-      this.manageUserService.deleteUser(user).subscribe((response) => {
-        this.ngOnInit();
-        alert(response.message);
+      this.manageUserService.deleteuser(user).subscribe((res: any) => {
+        this.manageUserService.getAllUsers().subscribe((users) => {
+          this.updateUserlist(users as User[]);
+        });
       });
     }
-  }
-
-  updateNewsletter(user: User): void {
-    this.manageUserService.updateUserNewsletter(user).subscribe((response) => {
-      this.ngOnInit();
-      alert(response.message);
-    });
   }
 }
