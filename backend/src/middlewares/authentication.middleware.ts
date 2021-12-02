@@ -34,7 +34,6 @@ export class AuthenticationMiddleware implements NestMiddleware {
         this.configService.get('JWT_SECRET_CODE'),
       );
       req.body.userId = decoded.userId;
-      req.body.isAdmin = decoded.isAdmin;
       next();
     } catch {
       res.status(401).json({

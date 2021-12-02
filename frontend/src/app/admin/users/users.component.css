@@ -1,13 +1,19 @@
-table {
-    width: 100%;
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.usertable {
+    width: 80%;
+    padding-left: 60px;
+    padding-top: 60px;
 }
 
 th {
     font-weight: bolder;
-    color: black;
-    padding: 0 2vw 0 2vw;
+    letter-spacing: 2px;
+    color: white;
 }
-
 
 td {
     padding: 0 2vw 0 2vw;

@@ -19,9 +19,6 @@ const PREFIX = 'Bearer';
 export class ManageUsersService {
   private headers: HttpHeaders | undefined;
 
-  private userListSource = new BehaviorSubject<User[]>([]);
-  currentUserList = this.userListSource.asObservable();
-
   constructor(
     private http: HttpClient,
     private localStorageService: LocalStorageService,
@@ -74,9 +71,5 @@ export class ManageUsersService {
           }
         }),
       );
-  }
-
-  updateUserList(users: User[]): void {
-    this.userListSource.next(users);
   }
 }

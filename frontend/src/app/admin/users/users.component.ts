@@ -16,17 +16,14 @@ export class UsersComponent implements OnInit {
   constructor(private manageUserService: ManageUsersService) {}
 
   ngOnInit(): void {
-    this.manageUserService.getAllUsers().subscribe((users) => {
-      this.updateUserlist(users as User[]);
-    });
-    this.manageUserService.currentUserList.subscribe((users) => {
-      this.updateUserlist(users);
-    });
+    this.updateUserlist();
   }
 
-  updateUserlist(users: User[]) {
-    this.users = users;
-    this.dataSource = new MatTableDataSource(this.users);
+  updateUserlist() {
+    this.manageUserService.getAllUsers().subscribe((users) => {
+      this.users = users as User[];
+      this.dataSource = new MatTableDataSource(this.users);
+    });
   }
 
   toggleAdminRight(user: User): void {
@@ -36,10 +33,8 @@ export class UsersComponent implements OnInit {
       )
     ) {
       user.isAdmin = !user.isAdmin;
-      this.manageUserService.saveuser(user).subscribe((res: any) => {
-        this.manageUserService.getAllUsers().subscribe((users) => {
-          this.updateUserlist(users as User[]);
-        });
+      this.manageUserService.saveuser(user).subscribe(() => {
+        this.updateUserlist();
       });
     }
   }
@@ -50,10 +45,8 @@ export class UsersComponent implements OnInit {
         `Are you sure to delete ${user.username} user with id: ${user.id}?`,
       )
     ) {
-      this.manageUserService.deleteuser(user).subscribe((res: any) => {
-        this.manageUserService.getAllUsers().subscribe((users) => {
-          this.updateUserlist(users as User[]);
-        });
+      this.manageUserService.deleteuser(user).subscribe(() => {
+        this.updateUserlist();
       });
     }
   }

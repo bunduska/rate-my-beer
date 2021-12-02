@@ -81,7 +81,7 @@ export class AppController {
     return this.usersService.findAllUsersExceptTheCurrentOne(userId);
   }
 
-  @Delete('/delete/user')
+  @Delete('/user/delete')
   async deleteuser(@Request() req) {
     const user: User = req.body;
     return this.usersService.deleteUser(user);
