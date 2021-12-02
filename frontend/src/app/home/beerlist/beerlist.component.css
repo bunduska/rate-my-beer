@@ -4,6 +4,13 @@
     padding-left: 25%;
     padding-top: 20px;
     align-items: center;
+    display: flex;
+ 
+}
+
+.mat-raised-button {
+    left: 10px;
+    bottom: 10px;
 }
 
 .beertable {

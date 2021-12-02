@@ -1,8 +1,9 @@
 <div class="filter">
     <mat-form-field appearance="fill">
         <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Search for some booze" #input>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search for some booze" #input [(ngModel)]="filterString" >
     </mat-form-field>
+    <button mat-raised-button color="warn" (click)="clearFilter()">Clear</button>
 </div>
 
 <div class="beertable">

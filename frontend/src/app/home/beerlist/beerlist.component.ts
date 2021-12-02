@@ -14,6 +14,7 @@ import { BeerModalComponent } from './beermodal.component';
   styleUrls: ['./beerlist.component.css'],
 })
 export class BeerlistComponent implements OnInit {
+  
   beers: Beer[] = [];
   displayedColumns: string[] = [
     'name',
@@ -24,6 +25,7 @@ export class BeerlistComponent implements OnInit {
     'rating',
     'date',
   ];
+  filterString: string = '';
   dataSource!: MatTableDataSource<Beer>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -72,5 +74,10 @@ export class BeerlistComponent implements OnInit {
     dialogConfig.disableClose = false;
     this.matDialog.open(BeerModalComponent, dialogConfig);
     this.beerService.setCurrentBeer(beer);
+  }
+
+  clearFilter() {
+    this.dataSource.filter = '';
+    this.filterString = '';
   }
 }
