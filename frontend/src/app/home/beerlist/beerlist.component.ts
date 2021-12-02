@@ -14,7 +14,6 @@ import { BeerModalComponent } from './beermodal.component';
   styleUrls: ['./beerlist.component.css'],
 })
 export class BeerlistComponent implements OnInit {
-  
   beers: Beer[] = [];
   displayedColumns: string[] = [
     'name',
