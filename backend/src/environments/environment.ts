@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://localhost:3000',
-  api_url_frontend: 'http://localhost:4200',
+  api_url: 'https://rate-my-beer-backend.herokuapp.com/',
+  api_url_frontend: 'https://rate-my-beer-app.herokuapp.com/',
 };
 
 /*

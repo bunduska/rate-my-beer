@@ -22,6 +22,11 @@ export class AppController {
     private beersService: BeersService,
   ) {}
 
+  @Get()
+  homepage() {
+    return `Rate Beer App's backend database greets you!`;
+  }
+
   @Post('/login')
   async login(@Request() req) {
     const userToLogin: { email: string; password: string } = req.body;

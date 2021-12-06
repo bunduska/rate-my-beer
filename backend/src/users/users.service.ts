@@ -60,7 +60,7 @@ export class UsersService {
       to: user.email,
       subject: 'Thanks for your registration to the Rate My Beer App',
       html: `Thanks for registering!
-      Please click to this <a href="${environment.api_url}/user/validation?token=${token}">link</a> to verify your email address.
+      Please click to this <a href="${environment.api_url}user/validation?token=${token}">link</a> to verify your email address.
      `,
     };
     try {
