@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from 'src/models/user.model';
-import { ConfigService } from 'src/config/config.service';
+import { User } from '../models/user.model';
+import { ConfigService } from '../config/config.service';
 import { environment } from '../environments/environment';
 import { hash } from 'argon2';
 import { JwtService } from '@nestjs/jwt';
@@ -73,7 +73,6 @@ export class UsersService {
   async validateRegistration(token: string): Promise<boolean> {
     const userToValidate: User = await this.jwtService.verify(token);
     const user: User = await this.findUserByEmail(userToValidate.email);
-    console.log(user);
     if (user) {
       user.isValidated = true;
       try {
