@@ -67,6 +67,4 @@ describe('BeersService', () => {
     const res = await service.deleteBeer(new Beer());
     expect(res.message).toContain('Beer entry was deleted.');
   });
-
-
 });
