@@ -9,7 +9,6 @@ import { ConfigService } from './config/config.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Connection } from 'typeorm';
 import { ConfigModule } from './config/config.module';
 import { User } from './models/user.model';
 import { BeersService } from './beers/beers.service';
@@ -55,11 +54,7 @@ import { AuthorizationMiddleware } from './middlewares/authorization.middleware'
   providers: [ConfigService, BeersService, UsersService],
 })
 export class AppModule implements NestModule {
-  constructor(
-    private connection: Connection,
-    private configService: ConfigService,
-    private usersService: UsersService,
-  ) {
+  constructor(private usersService: UsersService) {
     this.usersService
       .checkIfWeHaveTheAdminUser()
       .then((message) => console.log(message.message));
