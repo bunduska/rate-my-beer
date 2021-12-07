@@ -1,18 +1,17 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { User } from '../models/user.model';
-import { ConfigService } from '../config/config.service';
-import { environment } from '../environments/environment';
-import { hash } from 'argon2';
-import { JwtService } from '@nestjs/jwt';
-import { createTransport } from 'nodemailer';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { User } from "../models/user.model";
+import { ConfigService } from "../config/config.service";
+import { environment } from "../environments/environment";
+import { hash } from "argon2";
+import { JwtService } from "@nestjs/jwt";
+import { createTransport } from "nodemailer";
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectRepository(User)
-    private usersRepository: Repository<User>,
+    @InjectRepository(User) private usersRepository: Repository<User>,
     private configService: ConfigService,
     private jwtService: JwtService,
   ) {}
@@ -27,7 +26,7 @@ export class UsersService {
 
   async register(userToRegister: User): Promise<User | { message: string }> {
     if ((await this.findUserByEmail(userToRegister.email)) !== undefined) {
-      return { message: 'Email is already taken!' };
+      return { message: "Email is already taken!" };
     }
     userToRegister.password = await hash(userToRegister.password);
     await this.sendRegistrationValidator(userToRegister);
@@ -35,7 +34,7 @@ export class UsersService {
     try {
       return await this.usersRepository.save(userToRegister);
     } catch {
-      return { message: 'Error when saving user!!!' };
+      return { message: "Error when saving user!!!" };
     }
   }
 
@@ -47,18 +46,18 @@ export class UsersService {
     });
 
     const transporter = createTransport({
-      host: this.configService.get('EMAIL_SMTP_HOST'),
-      port: this.configService.get('EMAIL_SMTP_PORT'),
+      host: this.configService.get("EMAIL_SMTP_HOST"),
+      port: this.configService.get("EMAIL_SMTP_PORT"),
       auth: {
-        user: this.configService.get('EMAIL_ADDRESS'),
-        pass: this.configService.get('EMAIL_PASSWORD'),
+        user: this.configService.get("EMAIL_ADDRESS"),
+        pass: this.configService.get("EMAIL_PASSWORD"),
       },
     });
 
     const message = {
-      from: `Rate My Beer App <${this.configService.get('EMAIL_ADDRESS')}>`,
+      from: `Rate My Beer App <${this.configService.get("EMAIL_ADDRESS")}>`,
       to: user.email,
-      subject: 'Thanks for your registration to the Rate My Beer App',
+      subject: "Thanks for your registration to the Rate My Beer App",
       html: `Thanks for registering!
       Please click to this <a href="${environment.api_url}user/validation?token=${token}">link</a> to verify your email address.
      `,
@@ -88,23 +87,23 @@ export class UsersService {
   async checkIfWeHaveTheAdminUser(): Promise<{ message: string }> {
     if (
       await this.usersRepository.findOne({
-        where: { isAdmin: true, email: 'admin@admin.admin' },
+        where: { isAdmin: true, email: "admin@admin.admin" },
       })
     ) {
-      return { message: 'We have already the Admin user.' };
+      return { message: "We have already the Admin user." };
     } else {
       const adminUser = new User(
-        'Admin',
-        'admin@admin.admin',
-        await hash('adminadmin'),
+        "Admin",
+        "admin@admin.admin",
+        await hash("adminadmin"),
       );
       adminUser.isAdmin = true;
       adminUser.isValidated = true;
       try {
         await this.usersRepository.save(adminUser);
-        return { message: 'Admin user created.' };
+        return { message: "Admin user created." };
       } catch {
-        return { message: 'Error when saving the Admin user!!!' };
+        return { message: "Error when saving the Admin user!!!" };
       }
     }
   }
@@ -126,7 +125,7 @@ export class UsersService {
         message: `User entry succesfully saved (id ${userToSave.id}).`,
       };
     } catch {
-      return { message: 'Error when saving user record!!!' };
+      return { message: "Error when saving user record!!!" };
     }
   }
 
@@ -137,7 +136,7 @@ export class UsersService {
         message: `User was deleted.`,
       };
     } catch {
-      return { message: 'Error when deleting user record!!!' };
+      return { message: "Error when deleting user record!!!" };
     }
   }
 }
