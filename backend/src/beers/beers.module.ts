@@ -1,12 +1,12 @@
-import { UsersService } from './../users/users.service';
-import { Module } from '@nestjs/common';
-import { BeersService } from './beers.service';
-import { Beer } from '../models/beer.model';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { JwtModule } from '@nestjs/jwt';
-import { ConfigModule } from 'src/config/config.module';
-import { ConfigService } from 'src/config/config.service';
-import { User } from 'src/models/user.model';
+import { ConfigService } from "./../config/config.service";
+import { ConfigModule } from "./../config/config.module";
+import { User } from "./../models/user.model";
+import { UsersService } from "./../users/users.service";
+import { Module } from "@nestjs/common";
+import { BeersService } from "./beers.service";
+import { Beer } from "../models/beer.model";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { JwtModule } from "@nestjs/jwt";
 
 @Module({
   imports: [
@@ -14,9 +14,9 @@ import { User } from 'src/models/user.model';
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
-        secret: configService.get('JWT_SECRET_CODE'),
+        secret: configService.get("JWT_SECRET_CODE"),
         signOptions: {
-          expiresIn: configService.get('JWT_SECRET_CODE'),
+          expiresIn: configService.get("JWT_SECRET_CODE"),
         },
       }),
       inject: [ConfigService],
