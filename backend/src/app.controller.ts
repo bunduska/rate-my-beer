@@ -75,7 +75,7 @@ export class AppController {
   }
 
   @Post('/user/update')
-  async saveUser(@Request() req) {
+  async saveuser(@Request() req) {
     const user: User = req.body;
     return this.usersService.saveUser(user);
   }
