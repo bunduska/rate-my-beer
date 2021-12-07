@@ -8,6 +8,7 @@ import { JwtService } from '@nestjs/jwt';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { User } from './models/user.model';
 import { Beer } from './models/beer.model';
+import { Request } from 'express';
 
 describe('AppController', () => {
   let appController: AppController;
@@ -68,9 +69,9 @@ describe('AppController', () => {
   });
 
   it('should call the authentication service in case of a login', async () => {
-    const mockRequest = <Request>(<unknown>{
+    const mockRequest: Request = {
       body: { email: 'valaki@email.com', password: 'jelszo' },
-    });
+    } as Request;
 
     const res = await appController.login(mockRequest);
     expect(res).toEqual({ message: 'Please validate your e-mail!' });
@@ -79,13 +80,13 @@ describe('AppController', () => {
   });
 
   it('should call the users service in case of a registration', async () => {
-    const mockRequest = <Request>(<unknown>{
+    const mockRequest: Request = {
       body: {
         username: 'valaki',
         email: 'valaki@email.com',
         password: 'jelszo',
       },
-    });
+    } as Request;
 
     const res = await appController.register(mockRequest);
     expect(res).toEqual({ message: 'Email is already taken!' });
@@ -94,14 +95,14 @@ describe('AppController', () => {
   });
 
   it('should call the users service in case of a user modification/list/deletion', async () => {
-    const mockRequest = <Request>(<unknown>{
+    const mockRequest: Request = {
       body: {
         userId: '1',
         username: 'valaki',
         email: 'valaki@email.com',
         password: 'jelszo',
       },
-    });
+    } as Request;
 
     await appController.userlist(mockRequest);
     expect(spy2Service).toBeInstanceOf(Object);
@@ -117,9 +118,9 @@ describe('AppController', () => {
   });
 
   it('should call the beers service in case of a beer save/deletion', async () => {
-    const mockRequest = <Request>(<unknown>{
+    const mockRequest: Request = {
       body: {},
-    });
+    } as Request;
 
     await appController.savebeer(mockRequest);
     expect(spy3Service).toBeInstanceOf(Object);
