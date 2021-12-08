@@ -43,10 +43,10 @@ xdescribe('BeerlistComponent', () => {
         RouterTestingModule,
         HttpClientModule,
         MatPaginatorModule,
-        MatDialogModule
+        MatDialogModule,
       ],
       declarations: [BeerlistComponent],
-      providers: [ { provide: BeerService , useClass: BeerServiceStub }  ],
+      providers: [{ provide: BeerService, useClass: BeerServiceStub }],
     }).compileComponents();
   });
 

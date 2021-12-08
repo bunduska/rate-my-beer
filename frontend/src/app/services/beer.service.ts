@@ -66,15 +66,17 @@ export class BeerService {
   }
 
   getBeerList(): Observable<void | Beer[]> {
-    return this.http.get<Beer[]>(`${environment.api_url}/beerlist`, {
-      headers: this.headers,
-    }).pipe(
-      catchError(async (err: HttpErrorResponse) => {
-        if (err.status === 401) {
-          this.authService.logout();
-        }
-      }),
-    );
+    return this.http
+      .get<Beer[]>(`${environment.api_url}/beerlist`, {
+        headers: this.headers,
+      })
+      .pipe(
+        catchError(async (err: HttpErrorResponse) => {
+          if (err.status === 401) {
+            this.authService.logout();
+          }
+        }),
+      );
   }
 
   updateBeerList(beers: Beer[]): void {

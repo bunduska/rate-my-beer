@@ -27,34 +27,39 @@ describe('HomeComponent', () => {
   let beerServiceMock: BeerService;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({ imports: [
-      FormsModule,
-      ReactiveFormsModule,
-      MatTableModule,
-      MatCheckboxModule,
-      BrowserAnimationsModule,
-      OverlayModule,
-      MatInputModule,
-      MatIconModule,
-      RouterTestingModule,
-      HttpClientModule,
-      MatPaginatorModule,
-      MatDialogModule,
-      MatMenuModule,
-      MatToolbarModule,
-      MatTabsModule
-      
-    ],
-      declarations: [HomeComponent, BeerlistComponent, NewbeerComponent, UsersComponent],
+    await TestBed.configureTestingModule({
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatCheckboxModule,
+        BrowserAnimationsModule,
+        OverlayModule,
+        MatInputModule,
+        MatIconModule,
+        RouterTestingModule,
+        HttpClientModule,
+        MatPaginatorModule,
+        MatDialogModule,
+        MatMenuModule,
+        MatToolbarModule,
+        MatTabsModule,
+      ],
+      declarations: [
+        HomeComponent,
+        BeerlistComponent,
+        NewbeerComponent,
+        UsersComponent,
+      ],
     }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
-    const spy = jest.spyOn(component, 'isCurrentUserAdmin')
+    const spy = jest.spyOn(component, 'isCurrentUserAdmin');
     spy.mockReturnValue(false);
-    const spyBeerService = jest.spyOn(beerServiceMock,'constructor')
+    const spyBeerService = jest.spyOn(beerServiceMock, 'constructor');
     fixture.detectChanges();
   });
 
