@@ -1,7 +1,7 @@
-<div align="center">
 # Rate My Beer app 🍺
 
-  <a href="https://rate-my-beer-backend.herokuapp.com/">
+<div align="center">
+  <a href="https://rate-my-beer-app.herokuapp.com/">
     <img src="https://img.shields.io/badge/HEROKU-Frontend-blueviolet?style=for-the-badge&logo=Heroku">
   </a>
   &nbsp; &nbsp; &nbsp;
@@ -67,7 +67,7 @@
   - Image url
   - Rating
 
-- Users can also use RateBeer.com database, they have to enter a couple of keywords to the search bar and the beer's data is populated.
+- Users can also use Untapped.com database, they have to enter a couple of keywords to the search bar and the beer's data is populated.
 
 #### ** Beer list **
 
