@@ -25,7 +25,7 @@ class BeerServiceStub {
   }
 }
 
-xdescribe('BeerlistComponent', () => {
+describe('BeerlistComponent', () => {
   let component: BeerlistComponent;
   let fixture: ComponentFixture<BeerlistComponent>;
 
