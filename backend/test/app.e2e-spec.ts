@@ -9,8 +9,6 @@ import { User } from './../src/models/user.model';
 import { Beer } from './../src/models/beer.model';
 import { Repository } from 'typeorm';
 
-
-
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
@@ -33,7 +31,8 @@ describe('AppController (e2e)', () => {
             logging: configService.get('TYPEORM_LOGGING'),
           }),
           inject: [ConfigService],
-        }),TypeOrmModule.forFeature([Beer, User])
+        }),
+        TypeOrmModule.forFeature([Beer, User]),
       ],
     }).compile();
 
@@ -44,9 +43,8 @@ describe('AppController (e2e)', () => {
     const userRepo = app.get<Repository<User>>(getRepositoryToken(User));
     const beerRepo = app.get<Repository<Beer>>(getRepositoryToken(Beer));
 
-    await userRepo.query('delete from ratemybeer_test.user;')
-    await beerRepo.query('delete from ratemybeer_test.beer;')
-
+    await userRepo.query('delete from ratemybeer_test.user;');
+    await beerRepo.query('delete from ratemybeer_test.beer;');
   });
 
   afterAll(async () => {
@@ -60,44 +58,42 @@ describe('AppController (e2e)', () => {
   });
 
   it('should register a user', async () => {
-    const response = (
-      await request(app.getHttpServer()).post('/register')
-    .send(new User('uj', 'mi@mi.com', 'ninini')));
+    const response = await request(app.getHttpServer())
+      .post('/register')
+      .send(new User('uj', 'mi@mi.com', 'ninini'));
     expect(response.statusCode).toBe(201);
   });
 
   it('should not register a new user with an existing e-mail address', async () => {
-    const response = (
-      await request(app.getHttpServer()).post('/register')
-    .send(new User('uj', 'mi@mi.com', 'ninini')));
+    const response = await request(app.getHttpServer())
+      .post('/register')
+      .send(new User('uj', 'mi@mi.com', 'ninini'));
     expect(response.body).toStrictEqual({ message: 'Email is already taken!' });
   });
 
   it('should not log in a non-existing user', async () => {
-    const response = (
-      await request(app.getHttpServer()).post('/login')
-    .send({email: 'nincs', password: 'nincs'}));
+    const response = await request(app.getHttpServer())
+      .post('/login')
+      .send({ email: 'nincs', password: 'nincs' });
     expect(response.body).toStrictEqual({ message: 'User does not exist!' });
   });
 
   it('should not log in a user without e-mail validation', async () => {
-    const response = (
-      await request(app.getHttpServer()).post('/login')
-    .send({email: 'mi@mi.com', password: 'nincs'}));
-    expect(response.body).toStrictEqual({ message: 'Please validate your e-mail!' });
+    const response = await request(app.getHttpServer())
+      .post('/login')
+      .send({ email: 'mi@mi.com', password: 'nincs' });
+    expect(response.body).toStrictEqual({
+      message: 'Please validate your e-mail!',
+    });
   });
 
   it('should log in the user after an e-mail validation', async () => {
-  
     const userRepo = app.get<Repository<User>>(getRepositoryToken(User));
-    await userRepo.query("UPDATE ratemybeer_test.user SET isValidated = '1'")
-    
-    const response = (
-      await request(app.getHttpServer()).post('/login')
-    .send({email: 'mi@mi.com', password: 'ninini'}));
+    await userRepo.query("UPDATE ratemybeer_test.user SET isValidated = '1'");
+
+    const response = await request(app.getHttpServer())
+      .post('/login')
+      .send({ email: 'mi@mi.com', password: 'ninini' });
     expect(response.text).toContain('token');
   });
-
-
-
 });
