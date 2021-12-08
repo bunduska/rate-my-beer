@@ -2,5 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 pushd backend
-npm run test
+yarn test
 popd 

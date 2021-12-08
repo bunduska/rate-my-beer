@@ -59,7 +59,6 @@ describe('HomeComponent', () => {
     component = fixture.componentInstance;
     const spy = jest.spyOn(component, 'isCurrentUserAdmin');
     spy.mockReturnValue(false);
-    const spyBeerService = jest.spyOn(beerServiceMock, 'constructor');
     fixture.detectChanges();
   });
 
