@@ -3,7 +3,7 @@
   <a href="https://rate-my-beer-app.herokuapp.com/">
     <img src="https://img.shields.io/badge/HEROKU-Frontend-blueviolet?style=for-the-badge&logo=Heroku">
   </a>
-  &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; <br><br>
   <a href="https://rate-my-beer-backend.herokuapp.com/">
     <img src="https://img.shields.io/badge/HEROKU-Backend-blueviolet?style=for-the-badge&logo=Heroku">
   </a>
@@ -44,43 +44,46 @@
 
 ## Application Description
 
-### **App's Features:_**
+A web based beer rating app where users can store their beer ratings.
 
-#### ** User registration and login **
+## App's Features
 
-- Users can register, they must authenticate themselves with the link provided in the email before logging in.
+  #### User registration and login
 
-#### ** Adding new beer record **
+  - Users can register, they must authenticate themselves with the link provided in the email before logging in.
 
-- Users can add and rate the beers they have drinken.
+  #### Adding new beer records
 
-- The following information can be stored for the beers: 
-  - name of the beer
-  - type/style of the beer
-  - ABV
-  - brewery's name
-  - brewery's country
-  - brewery's city
-  - comments
-  - beer logo's image url
-  - rating
+  - Users can add and rate the beers they have drinken.
 
-- Users can also use Untapped.com database, they have to enter a couple of keywords to the search bar and the beer's data should be populated.
+  - The following information can be stored for the beers: 
+    - name of the beer
+    - type/style of the beer
+    - ABV
+    - brewery's name
+    - brewery's country
+    - brewery's city
+    - comments
+    - beer logo's image url
+    - rating
+    - date (automatically added)
 
-#### ** Beer list **
+  - Users can also use Untapped.com's database, they have to enter a couple of keywords to the search bar and the beer's data should be populated.
 
-- Users are able to see their beer list in a table's view
-  - filtering function is available
-  - table can be sorted by clicking on the headers
-  - pagination is available
+  #### Beer list
 
-- By clicking on a line a pop-up window appears where users can update or delete their beer record.
+  - Users are able to see their beer list in a table's view
+    - filtering function is available
+    - table can be sorted by clicking on the headers
+    - pagination is available
 
-#### ** Admin features **
+  - By clicking on a line a pop-up window appears where users can update or delete their beer record.
 
-- Admin users can change other users' roles to admin or to normal user.
+  #### Admin features 
 
-- Admin users can also delete users (except themselves).
+  - Admin users can change other users' roles to admin or to normal user.
+
+  - Admin users can also delete users (except themselves).
   
 ## Screenshots
 
