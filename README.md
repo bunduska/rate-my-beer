@@ -1,19 +1,14 @@
+<div align="center">
 # Rate My Beer app 🍺
 
-<div align="center">
   <a href="https://rate-my-beer-backend.herokuapp.com/">
-    <img src="https://img.shields.io/badge/HEROKU-Master_Branch-blueviolet?style=for-the-badge&logo=Heroku">
+    <img src="https://img.shields.io/badge/HEROKU-Frontend-blueviolet?style=for-the-badge&logo=Heroku">
   </a>
   &nbsp; &nbsp; &nbsp;
   <a href="https://rate-my-beer-backend.herokuapp.com/">
-    <img src="https://img.shields.io/badge/HEROKU-Dev_Branch-blueviolet?style=for-the-badge&logo=Heroku">
+    <img src="https://img.shields.io/badge/HEROKU-Backend-blueviolet?style=for-the-badge&logo=Heroku">
   </a>
 </div>
-
-<br>
-<p align="center">
-  <img src="https://i.imgur.com/b3MHBnW.png" width="150"/>
-</p>
 
 ## Project Setup:
 
@@ -32,8 +27,8 @@
         alt="nodejs" width="50" height="50" />
     </a> &nbsp; &nbsp; &nbsp;
     <a href="https://NestJS.com">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/NestJS/NestJS-original-wordmark.svg"
-        alt="express" width="50" height="50" />
+      <img src="https://docs.nestjs.com/assets/logo-small.svg"
+        alt="nestjs" width="50" height="50" />
     </a> &nbsp; &nbsp; &nbsp;
     <a href="https://www.mysql.com/">
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
@@ -46,7 +41,7 @@
       <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="50" height="50" /> </a>
    </a> &nbsp; &nbsp; &nbsp;
     <a href="https://www.ratebeer.com/">
-      <img src="https://www.ratebeer.com/images/logos/rblogo0316.png" alt="ratebeer" width="50" height="50" /> </a>
+      <img src="https://www.ratebeer.com/images/logos/rblogo0316.png" alt="ratebeer" height="50" /> </a>
   </p>
 
 ## Application Description
