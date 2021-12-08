@@ -1,6 +1,5 @@
 # Rate My Beer app 🍺
 
-<div align="center">
   <a href="https://rate-my-beer-app.herokuapp.com/">
     <img src="https://img.shields.io/badge/HEROKU-Frontend-blueviolet?style=for-the-badge&logo=Heroku">
   </a>
@@ -8,7 +7,6 @@
   <a href="https://rate-my-beer-backend.herokuapp.com/">
     <img src="https://img.shields.io/badge/HEROKU-Backend-blueviolet?style=for-the-badge&logo=Heroku">
   </a>
-</div>
 
 ## Project Setup:
 
@@ -41,7 +39,7 @@
       <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="50" height="50" /> </a>
    </a> &nbsp; &nbsp; &nbsp;
     <a href="https://www.ratebeer.com/">
-      <img src="https://www.ratebeer.com/images/logos/rblogo0316.png" alt="ratebeer" height="50" /> </a>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Untappd_Logotype_White_RGB.png/200px-Untappd_Logotype_White_RGB.png" alt="ratebeer" height="50" /> </a>
   </p>
 
 ## Application Description
@@ -60,19 +58,19 @@
   - name of the beer
   - type/style of the beer
   - ABV
-  - Brewery
-  - Brewery's country
-  - Brewery's city
-  - Comments
-  - Image url
-  - Rating
+  - brewery's name
+  - brewery's country
+  - brewery's city
+  - comments
+  - beer logo's image url
+  - rating
 
-- Users can also use Untapped.com database, they have to enter a couple of keywords to the search bar and the beer's data is populated.
+- Users can also use Untapped.com database, they have to enter a couple of keywords to the search bar and the beer's data should be populated.
 
 #### ** Beer list **
 
-- Users are able to see their ratings in a table's list
-  - search function is available
+- Users are able to see their beer list in a table's view
+  - filtering function is available
   - table can be sorted by clicking on the headers
   - pagination is available
 
