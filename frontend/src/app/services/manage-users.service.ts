@@ -6,7 +6,7 @@ import {
   HttpErrorResponse,
   HttpHeaders,
 } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { LocalStorageService } from './localstorage.service';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from './auth.service';

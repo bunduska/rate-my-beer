@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Beer } from 'src/app/models/beer.model';
-import { BeerService } from 'src/app/services/beer.service';
-import { SearchBeerService } from 'src/app/services/search-beer.service';
+import { Beer } from '../../models/beer.model';
+import { BeerService } from '../../services/beer.service';
+import { SearchBeerService } from '../../services/search-beer.service';
 
 @Component({
   selector: 'newbeer',

@@ -1,6 +1,6 @@
-import { BeerService } from 'src/app/services/beer.service';
+import { BeerService } from '../../services/beer.service';
 import { Component, OnInit } from '@angular/core';
-import { Beer } from 'src/app/models/beer.model';
+import { Beer } from '../../models/beer.model';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 

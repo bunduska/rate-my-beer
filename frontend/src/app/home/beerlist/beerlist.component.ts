@@ -3,8 +3,8 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Beer } from 'src/app/models/beer.model';
-import { BeerService } from 'src/app/services/beer.service';
+import { Beer } from '../../models/beer.model';
+import { BeerService } from '../../services/beer.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { BeerModalComponent } from './beermodal.component';
 

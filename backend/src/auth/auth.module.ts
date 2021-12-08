@@ -1,10 +1,10 @@
-import { ConfigModule } from "./../config/config.module";
-import { ConfigService } from "./../config/config.service";
-import { Module } from "@nestjs/common";
-import { AuthService } from "./auth.service";
-import { UsersModule } from "../users/users.module";
-import { PassportModule } from "@nestjs/passport";
-import { JwtModule } from "@nestjs/jwt";
+import { ConfigModule } from './../config/config.module';
+import { ConfigService } from './../config/config.service';
+import { Module } from '@nestjs/common';
+import { AuthService } from './auth.service';
+import { UsersModule } from '../users/users.module';
+import { PassportModule } from '@nestjs/passport';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -13,7 +13,7 @@ import { JwtModule } from "@nestjs/jwt";
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
-        secret: configService.get("JWT_SECRET_CODE"),
+        secret: configService.get('JWT_SECRET_CODE'),
         signOptions: {
           expiresIn: 3600,
         },

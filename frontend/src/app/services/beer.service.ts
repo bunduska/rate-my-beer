@@ -6,7 +6,7 @@ import {
   HttpErrorResponse,
   HttpHeaders,
 } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { LocalStorageService } from './localstorage.service';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from './auth.service';
@@ -68,14 +68,13 @@ export class BeerService {
   getBeerList(): Observable<void | Beer[]> {
     return this.http.get<Beer[]>(`${environment.api_url}/beerlist`, {
       headers: this.headers,
-    });
-    // .pipe(
-    //   catchError(async (err: HttpErrorResponse) => {
-    //     if (err.status === 401) {
-    //       this.authService.logout();
-    //     }
-    //   }),
-    // );
+    }).pipe(
+      catchError(async (err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.authService.logout();
+        }
+      }),
+    );
   }
 
   updateBeerList(beers: Beer[]): void {
