@@ -1,5 +1,3 @@
-import { BeerService } from './../services/beer.service';
-import { AuthService } from '../services/auth.service';
 import { UsersComponent } from './../admin/users/users.component';
 import { NewbeerComponent } from './newbeer/newbeer.component';
 import { BeerlistComponent } from './beerlist/beerlist.component';
@@ -24,7 +22,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 xdescribe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
-  let beerServiceMock: BeerService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

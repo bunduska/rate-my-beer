@@ -1,14 +1,11 @@
 import { Observable, of } from 'rxjs';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BeerlistComponent } from './beerlist.component';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { Beer } from '../../models/beer.model';
 import { BeerService } from '../../services/beer.service';
 import { MatDialogModule } from '@angular/material/dialog';
-import { BeerModalComponent } from './beermodal.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -59,8 +56,4 @@ xdescribe('BeerlistComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  // it('should match with previous snapshot', () => {
-  //   expect(fixture).toMatchSnapshot();
-  // });
 });
