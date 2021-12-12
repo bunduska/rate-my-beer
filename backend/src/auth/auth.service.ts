@@ -14,13 +14,18 @@ export class AuthService {
     email: string,
     pass: string,
   ): Promise<{ message: string } | { token: string }> {
-    const user = await this.usersService.findUserByEmail(email);
-    if (!user || user === undefined) {
-      return { message: 'User does not exist!' };
+    if (email === undefined || email === '') {
+      return { message: 'Missing e-mail field!' };
     }
-    if (!pass || pass === undefined) {
+    if (!pass || pass === undefined || pass === '') {
       return { message: 'Enter a password!' };
     }
+
+    const user = await this.usersService.findUserByEmail(email);
+    if (!user || email === undefined || email === '') {
+      return { message: 'User does not exist!' };
+    }
+
     if (!user.isValidated) {
       return { message: 'Please validate your e-mail!' };
     }
