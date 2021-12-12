@@ -25,7 +25,6 @@ export class UsersService {
   }
 
   async register(userToRegister: User): Promise<User | { message: string }> {
-    
     if (
       userToRegister.username === undefined ||
       userToRegister.username === ''
@@ -35,7 +34,10 @@ export class UsersService {
     if (userToRegister.email === undefined || userToRegister.email === '') {
       return { message: 'Missing email field!' };
     }
-    if (userToRegister.password === undefined || userToRegister.password === '') {
+    if (
+      userToRegister.password === undefined ||
+      userToRegister.password === ''
+    ) {
       return { message: 'Missing password field!' };
     }
 
@@ -44,7 +46,7 @@ export class UsersService {
     }
 
     userToRegister.password = await hash(userToRegister.password);
-    
+
     await this.sendRegistrationValidator(userToRegister);
 
     try {
