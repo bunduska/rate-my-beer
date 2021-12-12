@@ -5,3 +5,7 @@ pushd backend
 npm run test
 npm run test:e2e
 popd 
+
+pushd frontend
+npm run test
+popd 
