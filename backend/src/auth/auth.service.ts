@@ -10,10 +10,13 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async login(email: string, pass: string): Promise<any> {
+  async login(email: string, pass: string): Promise<{ message: string } | { token: string }> {
     const user = await this.usersService.findUserByEmail(email);
-    if (!user) {
+    if (!user || user === undefined) {
       return { message: 'User does not exist!' };
+    }
+    if (!pass || pass === undefined) {
+      return { message: 'Enter a password!' };
     }
     if (!user.isValidated) {
       return { message: 'Please validate your e-mail!' };
@@ -31,7 +34,7 @@ export class AuthService {
       };
       return {
         token: this.jwtService.sign(payload),
-      };
+      }
     }
     return { message: 'Unauthorized' };
   }

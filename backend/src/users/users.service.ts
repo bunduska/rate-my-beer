@@ -25,6 +25,15 @@ export class UsersService {
   }
 
   async register(userToRegister: User): Promise<User | { message: string }> {
+    if (userToRegister.username === undefined || userToRegister.username === '') {
+      return { message: 'Missing username field!' };
+    }
+    if (userToRegister.email === undefined || userToRegister.email === '') {
+      return { message: 'Missing email field!' };
+    }
+    if (userToRegister.password === undefined || userToRegister.email === '') {
+      return { message: 'Missing password field!' };
+    }
     if ((await this.findUserByEmail(userToRegister.email)) !== undefined) {
       return { message: 'Email is already taken!' };
     }
